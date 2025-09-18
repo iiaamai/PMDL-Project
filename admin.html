@@ -1,210 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="stylesheet" href="styles/global/global.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ADMIN</title>
-  <link rel="stylesheet" href="style.css">
-</head>
+  <body>
+    <aside class="sidebr" aria-label="Sidebr">
+      <div class="sidebr-header">PMDL Admin</div>
 
-<body>
-  <aside class="sidebr" aria-label="Sidebr">
-    <div class="sidebr-header">PMDL Admin</div>
+      <nav class="anav">
+        <ul class="Alist" role="menu">
+          <li><a href="#home" data-page="home" role="menuitem">Home</a></li>
+          <li>
+            <a href="#messages" data-page="messages" role="menuitem"
+              >Messages</a
+            >
+          </li>
+          <li>
+            <a href="#jobs" data-page="jobs" role="menuitem">Jobs Orders</a>
+          </li>
+          <li>
+            <a href="#notifications" data-page="notifications" role="menuitem"
+              >Notifications</a
+            >
+          </li>
+          <li>
+            <a href="#tracker" data-page="tracker" role="menuitem"
+              >Application Tracker</a
+            >
+          </li>
+          <li>
+            <a href="#settings" data-page="settings" role="menuitem"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-    <nav class="anav">
-      <ul class="Alist" role="menu">
-        <li><a href="#home" data-page="home" role="menuitem">Home</a></li>
-        <li><a href="#messages" data-page="messages" role="menuitem">Messages</a></li>
-        <li><a href="#jobs" data-page="jobs" role="menuitem">Jobs Orders</a></li>
-        <li><a href="#notifications" data-page="notifications" role="menuitem">Notifications</a></li>
-        <li><a href="#tracker" data-page="tracker" role="menuitem">Application Tracker</a></li>
-        <li><a href="#settings" data-page="settings" role="menuitem">Settings</a></li>
-      </ul>
-    </nav>
+      <div class="logout">
+        <a href="#" data-page="logout">Logout</a>
+      </div>
+    </aside>
 
-    <div class="logout">
-      <a href="#" data-page="logout">Logout</a>
-    </div>
-  </aside>
+    <div class="main">
+      <header class="topbar">
+        <div class="user1">Admin User</div>
+      </header>
 
-  <div class="main">
-    <header class="topbar">
-      <div class="user1">Admin User</div>
-    </header>
+      <main class="content" id="content">
+        <!-- Pages -->
+        <section id="home" class="page">
+          <h2>OFW Dashboard</h2>
+          <p>Welcome to the Admin dashboard. This is the Home page.</p>
 
-    <main class="content" id="content">
-      <!-- Pages -->
-      <section id="home" class="page">
-        <h2>OFW Dashboard</h2>
-        <p>Welcome to the Admin dashboard. This is the Home page.</p>
+          <select class="filter01">
+            <option value="">All OFWs</option>
+            <option value="Balik Mangagawa">Balik Mangagawa</option>
+            <option value="New Hire">New Hire</option>
+          </select>
+          <button class="btnA1">Upload Requirements</button>
 
-        <select class="filter01">
-          <option value="">All OFWs</option>
-          <option value="Balik Mangagawa">Balik Mangagawa</option>
-          <option value="New Hire">New Hire</option>
-        </select>
-        <button class="btnA1">Upload Requirements</button>
-
-        <div class="info1">
-          <h4>OFW Records</h4>
-          <a>List of OFW's and their documents status</a>
-        </div>
-
-        <div class="cnA">
-          <div class="filters">
-            <button class="filter-btn active" data-filter="all">All</button>
-            <button class="filter-btn" data-filter="complete">Complete</button>
-            <button class="filter-btn" data-filter="pending">Pending</button>
-            <button class="filter-btn" data-filter="incomplete">Incomplete</button>
-            <button class="filter-btn" data-filter="bm">Balik Manggagawa</button>
+          <div class="info1">
+            <h4>OFW Records</h4>
+            <a>List of OFW's and their documents status</a>
           </div>
 
-          <!--searchbar inside home-->
-          <div class="searchh1">
-            <input type="text" id="search" placeholder="Search OFWs...">
+          <div class="cnA">
+            <div class="filters">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="complete">
+                Complete
+              </button>
+              <button class="filter-btn" data-filter="pending">Pending</button>
+              <button class="filter-btn" data-filter="incomplete">
+                Incomplete
+              </button>
+              <button class="filter-btn" data-filter="bm">
+                Balik Manggagawa
+              </button>
+            </div>
+
+            <!--searchbar inside home-->
+            <div class="searchh1">
+              <input type="text" id="search" placeholder="Search OFWs..." />
+            </div>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Destination</th>
+                  <th>Job Title</th>
+                  <th>Status</th>
+                  <th>Last Updated</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="recordTable">
+                <tr data-status="complete bm">
+                  <td>Maria Santos <span class="bm-tag">BM</span></td>
+                  <td>Dubai, UAE</td>
+                  <td>Domestic Helper</td>
+                  <td class="status complete">Documents Complete</td>
+                  <td>2023-12-15</td>
+                  <td class="action"><a href="#">View Details</a></td>
+                </tr>
+                <tr data-status="incomplete bm">
+                  <td>Ana Reyes <span class="bm-tag">BM</span></td>
+                  <td>Hong Kong</td>
+                  <td>Nurse</td>
+                  <td class="status incomplete">Documents Incomplete</td>
+                  <td>2023-12-05</td>
+                  <td class="action"><a href="#">View Details</a></td>
+                </tr>
+                <tr data-status="pending">
+                  <td>Juan Cruz</td>
+                  <td>Qatar</td>
+                  <td>Engineer</td>
+                  <td class="status pending">Pending</td>
+                  <td>2023-12-01</td>
+                  <td class="action"><a href="#">View Details</a></td>
+                </tr>
+              </tbody>
+            </table>
           </div>
 
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Destination</th>
-                <th>Job Title</th>
-                <th>Status</th>
-                <th>Last Updated</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody id="recordTable">
-              <tr data-status="complete bm">
-                <td>Maria Santos <span class="bm-tag">BM</span></td>
-                <td>Dubai, UAE</td>
-                <td>Domestic Helper</td>
-                <td class="status complete">Documents Complete</td>
-                <td>2023-12-15</td>
-                <td class="action"><a href="#">View Details</a></td>
-              </tr>
-              <tr data-status="incomplete bm">
-                <td>Ana Reyes <span class="bm-tag">BM</span></td>
-                <td>Hong Kong</td>
-                <td>Nurse</td>
-                <td class="status incomplete">Documents Incomplete</td>
-                <td>2023-12-05</td>
-                <td class="action"><a href="#">View Details</a></td>
-              </tr>
-              <tr data-status="pending">
-                <td>Juan Cruz</td>
-                <td>Qatar</td>
-                <td>Engineer</td>
-                <td class="status pending">Pending</td>
-                <td>2023-12-01</td>
-                <td class="action"><a href="#">View Details</a></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+          <script>
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const rows = document.querySelectorAll("#recordTable tr");
+            const searchInput = document.getElementById("search");
 
-        <script>
-          const filterBtns = document.querySelectorAll(".filter-btn");
-          const rows = document.querySelectorAll("#recordTable tr");
-          const searchInput = document.getElementById("search");
+            filterBtns.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                filterBtns.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
 
-          filterBtns.forEach(btn => {
-            btn.addEventListener("click", () => {
-              filterBtns.forEach(b => b.classList.remove("active"));
-              btn.classList.add("active");
+                const filter = btn.dataset.filter;
 
-              const filter = btn.dataset.filter;
-
-              rows.forEach(row => {
-                if (filter === "all" || row.dataset.status.includes(filter)) {
-                  row.style.display = "";
-                } else {
-                  row.style.display = "none";
-                }
+                rows.forEach((row) => {
+                  if (filter === "all" || row.dataset.status.includes(filter)) {
+                    row.style.display = "";
+                  } else {
+                    row.style.display = "none";
+                  }
+                });
               });
             });
-          });
 
-          searchInput.addEventListener("keyup", () => {
-            const query = searchInput.value.toLowerCase();
-            rows.forEach(row => {
-              const name = row.cells[0].textContent.toLowerCase();
-              row.style.display = name.includes(query) ? "" : "none";
+            searchInput.addEventListener("keyup", () => {
+              const query = searchInput.value.toLowerCase();
+              rows.forEach((row) => {
+                const name = row.cells[0].textContent.toLowerCase();
+                row.style.display = name.includes(query) ? "" : "none";
+              });
             });
+          </script>
+        </section>
+
+        <section id="messages" class="page">
+          <h2>Messages</h2>
+          <p>Here are your messages.</p>
+        </section>
+
+        <section id="jobs" class="page">
+          <h2>Jobs Orders</h2>
+          <p>Manage job orders here.</p>
+        </section>
+
+        <section id="notifications" class="page">
+          <h2>Notifications</h2>
+          <p>Your notifications appear here.</p>
+        </section>
+
+        <section id="tracker" class="page">
+          <h2>Application Tracker</h2>
+          <p>Track applications here.</p>
+        </section>
+
+        <section id="settings" class="page">
+          <h2>Settings</h2>
+          <p>Manage settings here.</p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".Alist a");
+        const pages = document.querySelectorAll(".page");
+
+        function activate(pageId) {
+          // hide all pages
+          pages.forEach((p) => p.classList.remove("active"));
+          // show page if exists
+          const target = document.getElementById(pageId);
+          if (target) target.classList.add("active");
+
+          // set active class on nav links
+          navLinks.forEach((link) => {
+            link.classList.toggle("active", link.dataset.page === pageId);
           });
-        </script>
-      </section>
+        }
 
-      <section id="messages" class="page">
-        <h2>Messages</h2>
-        <p>Here are your messages.</p>
-      </section>
-
-      <section id="jobs" class="page">
-        <h2>Jobs Orders</h2>
-        <p>Manage job orders here.</p>
-      </section>
-
-      <section id="notifications" class="page">
-        <h2>Notifications</h2>
-        <p>Your notifications appear here.</p>
-      </section>
-
-      <section id="tracker" class="page">
-        <h2>Application Tracker</h2>
-        <p>Track applications here.</p>
-      </section>
-
-      <section id="settings" class="page">
-        <h2>Settings</h2>
-        <p>Manage settings here.</p>
-      </section>
-    </main>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const navLinks = document.querySelectorAll('.Alist a');
-      const pages = document.querySelectorAll('.page');
-
-      function activate(pageId) {
-        // hide all pages
-        pages.forEach(p => p.classList.remove('active'));
-        // show page if exists
-        const target = document.getElementById(pageId);
-        if (target) target.classList.add('active');
-
-        // set active class on nav links
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.dataset.page === pageId);
+        // click
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault(); // prevent default anchor navigation
+            const page = this.dataset.page || "home";
+            // push hash so the back button works
+            location.hash = page;
+            activate(page);
+          });
         });
-      }
 
-      // click 
-      navLinks.forEach(link => {
-        link.addEventListener('click', function (e) {
-          e.preventDefault(); // prevent default anchor navigation
-          const page = this.dataset.page || 'home';
-          // push hash so the back button works
-          location.hash = page;
-          activate(page);
+        // handle back/forward via hashchange
+        window.addEventListener("hashchange", () => {
+          const hash = location.hash.replace("#", "") || "home";
+          activate(hash);
         });
+
+        // initial
+        const initial = location.hash.replace("#", "") || "home";
+        activate(initial);
       });
-
-      // handle back/forward via hashchange
-      window.addEventListener('hashchange', () => {
-        const hash = location.hash.replace('#', '') || 'home';
-        activate(hash);
-      });
-
-      // initial
-      const initial = (location.hash.replace('#', '') || 'home');
-      activate(initial);
-    });
-  </script>
-
-</body>
-
+    </script>
+  </body>
 </html>

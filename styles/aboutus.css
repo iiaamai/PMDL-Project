@@ -1,0 +1,16 @@
+.Aboutct {
+  text-align: left;
+  margin-left: 30px;
+  font-family: "Poppins", sans-serif;
+  margin-top: 50px;
+}
+
+.Aboutct h2 {
+  color: #d32f2f;
+  font-size: 35px;
+}
+
+.Aboutct h4 {
+  font-size: 15px;
+  color: #868686;
+}

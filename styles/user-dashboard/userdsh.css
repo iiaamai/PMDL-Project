@@ -1,0 +1,94 @@
+.bar {
+  width: 220px;
+  background: #fffafa;
+  color: #585656;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 0;
+  height: 500px;
+}
+
+.bar h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.ss {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 20px;
+}
+
+.ss a {
+  color: #000000;
+  text-decoration: none;
+  font-size: 15px;
+  padding: 8px;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.ss a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.log {
+  padding: 0 20px;
+}
+
+.log a {
+  color: #000000;
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+  border-radius: 6px;
+}
+
+.log a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.hb {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  padding: 35px 15px;
+  margin-left: 400px;
+  margin-top: -500px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  width: 700px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.hb2 {
+  color: #868686;
+}
+
+.choice {
+  display: flex;
+  gap: 10px;
+  margin-left: 370px;
+}
+
+.ch1 {
+  background: white;
+  font-family: "Poppins", sans-serif;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 300px;
+  padding: 40px;
+  text-align: center;
+  margin-top: 25px;
+  margin-left: 10px;
+  justify-content: center;
+  gap: 10px;
+}
+
+.ch1 p {
+  color: #868686;
+}
