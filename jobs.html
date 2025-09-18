@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JOBS | PMDL</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+    <div class="left">
+      <i class="fas fa-user-graduate"></i>
+      <span class="logo-text">PMDL</span>
+    </div>
+
+    <nav class="center navbar">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="abtus.html">About Us</a></li>
+      </ul>
+    </nav>
+
+    <div class="right">
+      <a href="login.html" class="btn1 login">Log In</a>
+      <a href="register.html" class="btn2 register">Register</a>
+    </div>
+  </header>
+
+    <div class="search-section">
+    <input type="text" class="search-input" placeholder="Search jobs by title, skill or keyword">
+
+    <select class="location-select">
+      <option value="">All Locations</option>
+      <option value="japan">Japan</option>
+      <option value="taiwan">Taiwan</option>
+      <option value="singapore">Singapore</option>
+    </select>
+
+    <button class="btn-search" onclick="searchJobs()">Search Jobs</button>
+  </div>
+
+
+   <!-- Featured Jobs Section -->
+  <div class="subtitle">
+    <h2>Featured Job Opportunities</h2>
+    <h3>Discover the latest job openings with competitive salaries and benefits for Filipino <br>workers abroad</h3>
+  </div>
+
+  <script>
+    function searchJobs() {
+      let keyword = document.querySelector('.search-input').value;
+      let location = document.querySelector('.location-select').value;
+
+      if (keyword || location) {
+        alert("Searching for: " + keyword + " in " + (location || "all locations"));
+      } else {
+        alert("Please enter a keyword or choose a location.");
+      }
+    }
+  </script>
+
+  <!--Boxes on last-->
+  <section class="job-section">
+    <div class="job-cards">
+      <!-- Job Card 1 -->
+      <div class="job-card">
+        <h3>Registered Nurse</h3>
+        <p>Saudi German Hospital</p>
+        <p>📍 Saudi Arabia</p>
+        <div class="job-details">
+          <span>$2,000 - $2,500/month</span>
+          <span>Full-time</span>
+        </div>
+        <p>🗓 Until Dec 30, 2023</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+      <!-- Job Card 2 -->
+      <div class="job-card">
+        <h3>Construction Engineer</h3>
+        <p>Dubai Construction Co.</p>
+        <p>📍 UAE</p>
+        <div class="job-details">
+          <span>$3,000 - $4,000/month</span>
+          <span>Contract</span>
+        </div>
+        <p>🗓 Until Jan 15, 2024</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+
+      <!-- Job Card 3 -->
+      <div class="job-card">
+        <!--<img src="https://via.placeholder.com/50" alt="Helper">-->
+        <h3>Domestic Helper</h3>
+        <p>Hong Kong Placement Agency</p>
+        <p>📍 Hong Kong</p>
+        <div class="job-details">
+          <span>$650 - $850/month</span>
+          <span>Full-time</span>
+        </div>
+        <p>🗓 Until Dec 20, 2023</p>
+        <a href="#" class="btn">View Details</a>
+      </div>
+    </div>
+
+  <footer class="footer">
+    <div class="footer-container">
+
+      <!-- Column 1 -->
+      <div class="footer-col">
+        <h3>PMDL</h3>
+        <p>Your trusted partner in finding overseas employment opportunities for Filipino workers.</p>
+        <div class="social-icons">
+          <a href="#"><i class="fab fa-facebook-f"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Job Listings</a></li>
+          <li><a href="#">Our Services</a></li>
+          <li><a href="abtus.html">About Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="footer-col">
+        <h4>For Job Seekers</h4>
+        <ul>
+          <li><a href="#">Create Account</a></li>
+          <li><a href="#">Login</a></li>
+          <li><a href="#">Browse Jobs</a></li>
+          <li><a href="#">Application Guide</a></li>
+        </ul>
+      </div>
+
+      <!-- Column 4 -->
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <p><i class="fas fa-phone"></i> +63 (2) 8123 4567</p>
+        <p><i class="fas fa-envelope"></i> info@pmdl.com</p>
+        <p><i class="fas fa-map-marker-alt"></i> 123 Recruitment Plaza, Makati City, Philippines</p>
+      </div>
+    </div>
+    
+    <div class="lastfooter">
+        <h4>© 2025 PMDL Recruitment Agency. All rights reserved.</h4>
+      </div>
+  </footer>
+</body>
+</html>
