@@ -1,4 +1,36 @@
 /*ADMIN UI*/
+
+/*Pie Chart*/
+
+*{
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+button:focus input:focus, textarea:focus {
+  outline: 0;
+}
+
+body {
+  background: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+ padding: 80px 0;
+  text-align: center;
+}
+
+.container h2 {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
 .sidebr {
   font-family: "Poppins", sans-serif;
   position: fixed;
@@ -239,6 +271,21 @@ table th {
 
 .action a:hover {
   text-decoration: underline;
+}
+.charts-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.charts-row > div {
+  width: 400px;
+  height: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 /* ADAPT */
 @media only screen and (max-width: 767px) {
