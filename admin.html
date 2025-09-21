@@ -4,7 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ADMIN</title>
-    <link rel="stylesheet" href="styles/admin.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/admin.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/messages.css" />
     <link rel="stylesheet" href="styles/global/global.css" />
   </head>
 
@@ -162,8 +163,76 @@
         </section>
 
         <section id="messages" class="page">
-          <h2>Messages</h2>
-          <p>Here are your messages.</p>
+          <div class="messages-container">
+            <div class="messages-list">
+              <div class="list-header">
+                <h3>Messages</h3>
+                <div class="search">
+                  <input type="text" placeholder="Search..." />
+                  <span
+                    ><img src="images/icons/search-icon.svg" alt="Search"
+                  /></span>
+                </div>
+              </div>
+              <div class="lists">
+                <div class="conversation convo-notif">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Maria Santos</h4>
+                      <span class="time">10:23 AM</span>
+                    </div>
+                    <p class="chat">I submitted my medical certificate erd</p>
+                  </div>
+                  <span class="notif notif-active">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Juan Dela Cruz</h4>
+                      <span class="time">Yesterday</span>
+                    </div>
+                    <p class="chat">When will my PDOS be scheduled</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Ana Reyes</h4>
+                      <span class="time">Dec 12</span>
+                    </div>
+                    <p class="chat">Thank you for helping with my OEC cat</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+              </div>
+            </div>
+            <div class="messages-conversation">
+              <div class="container">
+                <div class="image-container">
+                  <img src="images/icons/message-icon.svg" alt="" />
+                </div>
+                <div class="message-error">
+                  <h3>Your Messages</h3>
+                  <p>Select a conversation to start messaging</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section id="jobs" class="page">
