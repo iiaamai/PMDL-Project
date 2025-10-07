@@ -9,7 +9,7 @@
 }
 .user10 {
   color: #ffffff;
-  margin-left: 1010px;
+  margin-left: 950px;
 }
 
 .userapp {
@@ -83,7 +83,7 @@ input[disabled] {
   text-align: right;
 }
 
-.form-footer button {
+.btn1 {
   background: #c00;
   color: white;
   padding: 12px 20px;
@@ -93,7 +93,7 @@ input[disabled] {
   cursor: pointer;
 }
 
-.form-footer button:hover {
+.btn1:hover {
   background: #a00;
 }
 .Afooter {

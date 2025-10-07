@@ -37,6 +37,21 @@
   outline: none;
 }
 
+.btn-search {
+  background: #c62828;
+  color: white;
+  font-weight: bold;
+  padding: 20px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-search:hover {
+  background: #b71c1c;
+}
+
 .subtitle {
   margin-top: 30px;
   font-family: "Poppins", sans-serif;

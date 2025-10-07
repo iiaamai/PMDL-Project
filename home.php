@@ -19,7 +19,7 @@
 
       <nav class="center navbar">
         <ul>
-          <li><a href="home.html">Home</a></li>
+          <li><a href="home.php">Home</a></li>
           <li><a href="jobs.html">Jobs</a></li>
           <li><a href="services.html">Services</a></li>
           <li><a href="abtus.html">About Us</a></li>
@@ -27,8 +27,7 @@
       </nav>
 
       <div class="right">
-        <a href="login.html" class="btn1">Log In</a>
-        <a href="register.html" class="btn2">Register</a>
+        <a href="registerlog.php" class="btn2">Log In</a>
       </div>
     </header>
 
@@ -43,7 +42,7 @@
           <a href="jobs.html" class="btp1">Find Jobs</a>
         </button>
         <button class="btn-secondary">
-          <a href="register.html" class="btp2">Register Now</a>
+          <a href="registerlog.php" class="btp2">Register Now</a>
         </button>
       </div>
     </section>
@@ -171,7 +170,7 @@
         <div class="footer-col">
           <h4>Quick Links</h4>
           <ul>
-            <li><a href="home.html">Home</a></li>
+            <li><a href="home.php">Home</a></li>
             <li><a href="jobs.html">Job Listings</a></li>
             <li><a href="services.html">Our Services</a></li>
             <li><a href="abtus.html">About Us</a></li>
@@ -182,8 +181,8 @@
         <div class="footer-col">
           <h4>For Job Seekers</h4>
           <ul>
-            <li><a href="register.html">Create Account</a></li>
-            <li><a href="login.html">Login</a></li>
+            <li><a href="registerlog.php">Create Account</a></li>
+            <li><a href="registerlog.php">Login</a></li>
             <li><a href="jobs.html">Browse Jobs</a></li>
             <li><a href="services.html">Application Guide</a></li>
           </ul>

@@ -126,7 +126,7 @@ body {
   background: #fff;
 }
 .user1 {
-  margin-left: 1000px;
+  margin-left: 100px;
 }
 .content {
   font-family: "Poppins", sans-serif;
@@ -163,7 +163,7 @@ body {
 /*--------------------------------------------------------------------------------------------*/
 /* ADMIN HOMEPAGE */
 .filter01 {
-  margin-left: 700px;
+  width: 150px;
   padding: 8px 20px;
   border-radius: 4px;
 }

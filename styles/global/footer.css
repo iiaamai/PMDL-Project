@@ -2,14 +2,13 @@
   background-color: #b71c1c;
   /* dark red background */
   color: white;
-  padding: 60px 20px;
+  padding: 20px;
   font-family: "Poppins", sans-serif;
 }
 
 .footer-container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  /* 4 equal columns */
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;

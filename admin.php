@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+// Check if admin is logged in
+if (!isset($_SESSION['admin_email'])) {
+    header("Location: registerlog.php"); // back to login if not logged in
+    exit();
+}
+
+$userEmail = $_SESSION['admin_email'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -13,7 +25,7 @@
   <body>
     <aside class="sidebr" aria-label="Sidebr">
       <div class="sidebr-header">PMDL Admin</div>
-
+<!-- co -->
       <nav class="anav">
         <ul class="Alist" role="menu">
           <li><a href="#home" data-page="home" role="menuitem">Home</a></li>
@@ -44,13 +56,13 @@
       </nav>
 
       <div class="logout">
-        <a href="#" data-page="logout">Logout</a>
+        <a href="php/logout.php" data-page="logout">Logout</a>
       </div>
     </aside>
 
     <div class="main">
       <header class="topbar">
-        <div class="user1">Admin User</div>
+        <div class="user1"><?php echo htmlspecialchars($userEmail); ?></div>
       </header>
 
       <main class="content" id="content">
