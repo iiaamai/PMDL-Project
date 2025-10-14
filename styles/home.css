@@ -66,6 +66,35 @@
   color: white;
 }
 
+/*--------------------------------------------------------*/
+.sub-info {
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+  gap: 20px;
+}
+
+.sub-box {
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  width: 270px;
+  height: 120px;
+  padding: 10px;
+}
+
+.num-box {
+  color: #b71c1c;
+  font-size: 34px;
+}
+
+.sub-num {
+  font-size: 15px;
+  color: #534f4f;
+}
+
+/*-------------------------------------------------------------*/
 .last1 {
   text-align: center;
   font-family: "Poppins", sans-serif;
@@ -112,6 +141,22 @@
 .boxend h4 {
   margin-top: 10px;
   color: #857f7f;
+}
+
+.view-all {
+  display: inline-block;
+  margin-top: 20px;
+  background-color: #d32f2f;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.view-all:hover {
+  background-color: #b71c1c;
 }
 
 /* below */
@@ -177,7 +222,7 @@
   background-color: #b71c1c;
   color: white;
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px;
   font-family: "Poppins", sans-serif;
 }
 
@@ -229,4 +274,77 @@
 .bt.lm :hover {
   background-color: white;
   color: #b71c1c;
+}
+
+/*-------------------------------FREQ - ASKED------------------------------------*/
+.freq-ask {
+  font-family: "Poppins", sans-serif;
+}
+
+.freq-title {
+  margin-top: 70px;
+  margin-bottom: 70px;
+  text-align: center;
+  font-size: 27px;
+  font-weight: bold;
+}
+
+.freq-space {
+  display: flex;
+  justify-content: center;
+}
+
+.freq-sub-title {
+  font-size: 23px;
+}
+
+.freq-box {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px 20px;
+  border-radius: 8px;
+  width: 1260px;
+  height: 560px;
+  margin-bottom: 40px;
+}
+
+.faq-item {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+
+.faq-question {
+  cursor: pointer;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+  font-size: 16px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+  max-height: 500px;
+  /* expands */
+  padding: 15px;
+}
+
+.arrow {
+  transition: transform 0.3s ease;
+  font-size: 19px;
+  color: #b71c1c;
+}
+
+.faq-item.active .arrow {
+  transform: rotate(180deg);
 }
