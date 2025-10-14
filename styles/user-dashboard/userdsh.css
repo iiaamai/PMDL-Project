@@ -1,14 +1,8 @@
-/* .bar {
-  width: 220px;
-  background: #fffafa;
-  color: #585656;
-  font-family: "Poppins", sans-serif;
+.container {
   display: flex;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 0;
-  height: 500px;
+  gap: 100px;
+  min-height: 100vh;
+  align-content: start;
 }
 
 .user {
@@ -16,129 +10,24 @@
   margin-left: 1000px;
 }
 
-.bar h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 18px;
-}
-
-.ss {
+/* -------------------------------------------------------------- */
+.sidebar {
+  width: 200px;
+  font-family: "Poppins", sans-serif;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  padding: 0 20px;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+
+.page {
+  flex: 1;
 }
 
 .ss a {
-  color: #000000;
-  text-decoration: none;
-  font-size: 15px;
-  padding: 8px;
-  border-radius: 6px;
-  transition: background 0.3s;
-}
-
-.ss a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.log {
-  padding: 0 20px;
-}
-
-.log a {
-  color: #000000;
-  text-decoration: none;
-  display: block;
-  padding: 10px;
-  border-radius: 6px;
-}
-
-.log a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.hb {
-  font-family: "Poppins", sans-serif;
-  text-align: center;
-  padding: 35px 15px;
-  margin-left: 400px;
-  margin-top: -500px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  width: 700px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.hb2 {
-  color: #868686;
-}
-
-.choice {
-  display: flex;
-  gap: 10px;
-  margin-left: 370px;
-  margin-top: 40px;
-}
-.choice :hover{
-  background: rgb(212, 73, 73);
-  color: white;
-}
-.choice button{
-  height: 160px;
-  border-radius: 5px;
-  border: none;
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-} */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.user {
-  color: #ffffff;
-  margin-left: 1000px;
-}
-
-
-/* Header */
-header.hdu {
-  background-color: #c62828;
-  color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-header .srbr .ic {
-  font-weight: bold;
-  font-size: 18px;
-}
-
-header .srbr .user {
-  font-size: 14px;
-}
-
-/* Sidebar */
-.bar {
-  font-family: "Poppins", sans-serif;
-  position: fixed;
-  top: 55px;
-  left: 0;
-  width: 200px;
-  height: calc(100% - 60px);
-  background-color: #fff9f9;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 0;
-}
-
-.bar .ss a {
   display: block;
   padding: 12px 20px;
   text-decoration: none;
@@ -149,48 +38,44 @@ header .srbr .user {
 .bar .ss a:hover {
   background-color: #f2f2f2;
   color: #c62828;
+  border-radius: 2px;
 }
 
-.bar .log {
+.log {
   padding: 20px;
 }
 
-.bar .log a {
+.log a {
   text-decoration: none;
   color: #000;
 }
 
-.bar .log a:hover {
+.log a:hover {
   color: #c62828;
 }
 
-/* Content */
-.hb {
+/* ---------------------------------------------------------------- */
+.content-space {
+  display: flex;
+  justify-content: center;
+}
+
+.content {
+  width: 70%;
+  height: 75%;
   font-family: "Poppins", sans-serif;
-  margin-left: 220px;
-  margin-top: 80px;
+  display: flex;
   text-align: center;
-  border-radius: 8px;
-  padding: 50px;
-  width: 700px;
-  margin-left: 440px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 40px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  border-radius: 8px;
 }
 
-.hb1 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.hb2 {
-  font-size: 14px;
-  color: #777;
-}
-
-/* Choice buttons */
 .choice {
   font-family: "Poppins", sans-serif;
-  margin-left: 220px;
   margin-top: 30px;
   display: flex;
   gap: 20px;
@@ -219,7 +104,7 @@ header .srbr .user {
   margin-bottom: 8px;
 }
 
-/*-------------------JOBS SECTION----------------------------*/
+/* --------------------------------------JOB AVAIL-------------------------------------------- */
 .subJob {
   font-family: "Poppins", sans-serif;
   margin-top: 60px;
@@ -256,6 +141,7 @@ header .srbr .user {
   width: 300px;
   padding: 20px;
   text-align: left;
+  box-sizing: border-box;
 }
 
 .job-card h3 {
@@ -314,6 +200,7 @@ header .srbr .user {
   box-shadow: 0 0 5px rgba(211, 47, 47, 0.5);
   outline: none;
 }
+
 .btn-search {
   background: #c62828;
   color: white;
@@ -328,57 +215,66 @@ header .srbr .user {
 .btn-search:hover {
   background: #b71c1c;
 }
-/*-------------------------MESSAGES PAGE---------------------------*/
-.mess-container{
+
+/* -------------------------MESSAGES------------------------- */
+.mess-container {
   display: flex;
   justify-content: center;
   gap: 9px;
   margin-top: 50px;
   font-family: "Poppins", sans-serif;
-  
+
 }
-.mess-content1{
+
+.mess-content1 {
   background-color: #f3f3f3;
   padding: 20px;
   border-radius: 10px;
   width: 400px;
   height: 500px;
 }
-.mess-content2{
+
+.mess-content2 {
   background-color: #f3f3f3;
   padding: 20px;
   border-radius: 10px;
   width: 500px;
 }
-.mess-search{
+
+.mess-search {
   margin-top: 20px;
   padding: 6px;
   border: none;
   border-radius: 4px;
 }
-/*------------------------SETTINGS PAGE----------------------------*/
-.settings-container{
+
+/* -----------------------------SETTINGS------------------------------- */
+.settings-container {
   display: flex;
   justify-content: center;
   gap: 9px;
   margin-top: 50px;
   font-family: "Poppins", sans-serif;
 }
-.settings-select h4{
+
+.settings-select h4 {
   margin-bottom: 20px;
 }
-.settings-select{
+
+.settings-select {
   background-color: #f3f3f3;
   border-radius: 10px;
   padding: 15px;
   width: 250px;
   height: 490px;
 }
-.set-choices ul{
+
+.set-choices ul {
   list-style-type: none;
   background-color: #f2f2f2;
 }
-.set-choices a{
+
+.set-choices a {
   text-decoration: none;
   color: #000;
   padding: 15px;
@@ -386,11 +282,13 @@ header .srbr .user {
   width: 200px;
   border-radius: 4px;
 }
-.set-choices a:hover{
+
+.set-choices a:hover {
   background-color: #d32f2f;
   color: #f3f3f3;
 }
-.settings-result{
+
+.settings-result {
   width: 600px;
   height: 500px;
   padding: 15px;
