@@ -9,43 +9,67 @@ if (!isset($_SESSION['admin_email'])) {
 
 $userEmail = $_SESSION['admin_email'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ADMIN</title>
-  <link rel="stylesheet" href="styles/admin-dashboard/admin.css" />
-  <link rel="stylesheet" href="styles/admin-dashboard/messages.css" />
-  <link rel="stylesheet" href="styles/admin-dashboard/joborder.css" />
-  <link rel="stylesheet" href="styles/global/global.css" />
-  <link rel="stylesheet" href="styles/admin-dashboard/jobOrder.css" />
-</head>
-<body>
-  <aside class="sidebr" aria-label="Sidebr">
-    <div class="sidebr-header">PMDL Admin</div>
-    <nav class="anav">
-      <ul class="Alist" role="menu">
-        <li><a href="#home" data-page="home" role="menuitem">Home</a></li>
-        <li><a href="#messages" data-page="messages" role="menuitem">Messages</a></li>
-        <li><a href="#jobs" data-page="jobs" role="menuitem">Jobs Orders</a></li>
-        <li><a href="#notifications" data-page="notifications" role="menuitem">Notifications</a></li>
-        <li><a href="#tracker" data-page="tracker" role="menuitem">Application Tracker</a></li>
-        <li><a href="#settings" data-page="settings" role="menuitem">Settings</a></li>
-      </ul>
-    </nav>
-    <div class="logout">
-      <a href="php/logout.php" data-page="logout">Logout</a>
-    </div>
-  </aside>
-  <div class="main">
-    <header class="topbar">
-      <div class="user1"><?php echo htmlspecialchars($userEmail); ?></div>
-    </header>
-    <main class="content" id="content">
-      <!-- Pages -->
-      <section id="home" class="page">
-        <div class="container">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="styles/admin-dashboard/admin.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/messages.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/joborder.css" />
+    <link rel="stylesheet" href="styles/global/global.css" />
+  </head>
+
+  <body>
+    <aside class="sidebr" aria-label="Sidebr">
+      <div class="sidebr-header">PMDL Admin</div>
+<!-- co -->
+      <nav class="anav">
+        <ul class="Alist" role="menu">
+          <li><a href="#home" data-page="home" role="menuitem">Home</a></li>
+          <li>
+            <a href="#messages" data-page="messages" role="menuitem"
+              >Messages</a
+            >
+          </li>
+          <li>
+            <a href="#jobs" data-page="jobs" role="menuitem">Jobs Orders</a>
+          </li>
+          <li>
+            <a href="#notifications" data-page="notifications" role="menuitem"
+              >Notifications</a
+            >
+          </li>
+          <li>
+            <a href="#tracker" data-page="tracker" role="menuitem"
+              >Application Tracker</a
+            >
+          </li>
+          <li>
+            <a href="#settings" data-page="settings" role="menuitem"
+              >Settings</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="logout">
+        <a href="php/logout.php" data-page="logout">Logout</a>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="user1"><?php echo htmlspecialchars($userEmail); ?></div>
+      </header>
+
+      <main class="content" id="content">
+        <!-- Pages -->
+        <section id="home" class="page">
+           
+          <div class="container">
             <h2>Country Distribution</h2>
             <div class="charts-row">
               <div id="piechart"></div>
@@ -53,10 +77,40 @@ $userEmail = $_SESSION['admin_email'];
             </div>
           </div>
           
-          <!-- JAVASCRIPT FILES and LIBRARIES -->
           <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
           <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-          <script src = "jsfile/homePage.js"></script>
+          <script>
+            google.charts.load('current', {'packages': ['corechart']});
+            google.charts.setOnLoadCallback(drawCharts);
+
+            function drawCharts() {
+              // Chart 1
+              var data1 = google.visualization.arrayToDataTable([
+                ['Country', 'Count'],
+                ['Japan', 8],
+                ['Taiwan', 2],
+                ['Kuwait', 4],
+                ['Dubai', 2],
+                ['Doha Qatar', 8]
+              ]);
+              var options1 = {'title': 'Country', 'width': 400, 'height': 300};
+              var chart1 = new google.visualization.PieChart(document.getElementById('piechart'));
+              chart1.draw(data1, options1);
+
+              // Chart 2 (example: different data or same)
+              var data2 = google.visualization.arrayToDataTable([
+                ['Country', 'Count'],
+                ['Domestic Helper', 5],
+                ['Nurse', 10],
+                ['Factory Worker', 6],
+                ['Kitchen Staff', 4],
+                ['Electrician', 7]
+              ]);
+              var options2 = {'title': 'Jobs', 'width': 400, 'height': 300};
+              var chart2 = new google.visualization.PieChart(document.getElementById('piechart1'));
+              chart2.draw(data2, options2);
+            }
+          </script>
 
           <h2>OFW Dashboard</h2>
           <p>Welcome to the Admin dashboard. This is the Home page.</p>
@@ -132,11 +186,41 @@ $userEmail = $_SESSION['admin_email'];
               </tbody>
             </table>
           </div>
-          <!-- JAVASCRIPT FILE -->
-          <script src = "jsfile/homePage2.js"></script>
-      </section>
-      <section id="messages" class="page">
-        <div class="messages-container">
+
+          <script>
+            const filterBtns = document.querySelectorAll(".filter-btn");
+            const rows = document.querySelectorAll("#recordTable tr");
+            const searchInput = document.getElementById("search");
+
+            filterBtns.forEach((btn) => {
+              btn.addEventListener("click", () => {
+                filterBtns.forEach((b) => b.classList.remove("active"));
+                btn.classList.add("active");
+
+                const filter = btn.dataset.filter;
+
+                rows.forEach((row) => {
+                  if (filter === "all" || row.dataset.status.includes(filter)) {
+                    row.style.display = "";
+                  } else {
+                    row.style.display = "none";
+                  }
+                });
+              });
+            });
+
+            searchInput.addEventListener("keyup", () => {
+              const query = searchInput.value.toLowerCase();
+              rows.forEach((row) => {
+                const name = row.cells[0].textContent.toLowerCase();
+                row.style.display = name.includes(query) ? "" : "none";
+              });
+            });
+          </script>
+        </section>
+
+        <section id="messages" class="page">
+          <div class="messages-container">
             <div class="messages-list">
               <div class="list-header">
                 <h3>Messages</h3>
@@ -206,14 +290,205 @@ $userEmail = $_SESSION['admin_email'];
               </div>
             </div>
           </div>
-      </section>
-      <section id="jobs" class="page">
-        <h2>Jobs Orders</h2>
-        <p>Manage job orders here.</p>
-        
-        <div class="container">
+        </section>
+
+        <section id="jobs" class="page">
+          <h2>Jobs Orders</h2>
+          <p>Manage job orders here.</p>
+        </section>
+
+<div class="container">
     <div class="flex justify-between mb-6">
-      
+      <style>
+        /* Add your custom styles here */
+            body {
+      font-family: Arial, sans-serif;
+      background: #f9fafb;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+    h1, h2, h3 {
+      margin: 0 0 10px 0;
+    }
+    button {
+      cursor: pointer;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .flex {
+      display: flex;
+      align-items: center;
+    }
+    .space-x-2 > * + * {
+      margin-left: 8px;
+    }
+    .space-y-4 > * + * {
+      margin-top: 16px;
+    }
+    .btn {
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+    .btn:hover {
+      background-color: #eee;
+    }
+    .btn-primary {
+      background-color: #dc2626;
+      color: white;
+      border: none;
+    }
+    .btn-primary:hover {
+      background-color: #b91c1c;
+    }
+    .btn-secondary {
+      background-color: #f3f4f6;
+      border: none;
+      color: #555;
+    }
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+    }
+    input[type="text"], input[type="number"], input[type="email"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 6px 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    textarea {
+      resize: vertical;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    th, td {
+      padding: 12px 15px;
+      border-bottom: 1px solid #eee;
+      text-align: left;
+      font-size: 14px;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 600;
+      color: #555;
+    }
+    tr:hover {
+      background-color: #f9fafb;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      color: white;
+    }
+    .badge-active {
+      background-color: #22c55e;
+    }
+    .badge-pending {
+      background-color: #eab308;
+    }
+    .badge-closed {
+      background-color: #6b7280;
+    }
+    /* Modal styles */
+    .modal-overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal {
+      background: white;
+      border-radius: 8px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 20px;
+      box-sizing: border-box;
+      position: relative;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      color: #999;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .flex-wrap {
+      flex-wrap: wrap;
+    }
+    .flex-col {
+      flex-direction: column;
+    }
+    .list-disc {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+    .list-inside {
+      list-style-position: inside;
+    }
+    .text-red {
+      color: #dc2626;
+    }
+    .text-gray {
+      color: #6b7280;
+    }
+    .text-sm {
+      font-size: 12px;
+    }
+    .text-lg {
+      font-size: 18px;
+    }
+    .mb-2 {
+      margin-bottom: 8px;
+    }
+    .mb-4 {
+      margin-bottom: 16px;
+    }
+    .mb-6 {
+      margin-bottom: 24px;
+    }
+    .cursor-pointer {
+      cursor: pointer;
+    }
+      </style>
       <button id="btnFilter" class="btn btn-secondary">Filter</button>
       <button id="btnAddJob" class="btn btn-primary">Add New Job Order</button>
     </div>
@@ -321,21 +596,342 @@ $userEmail = $_SESSION['admin_email'];
       </form>
     </div>
   </div>
-      </section>
-      <section id="reports" class="page"></section>
-      <section id="notifications" class="page">
-        <h2>Notifications</h2>
-        <p>Your notifications appear here.</p>
-      </section>
-      <section id="tracker" class="page">
-        <h2>Application Tracker</h2>
-        <p>Track applications here.</p>
-      </section>
-      <section id="settings" class="page">
-        <h2>Settings</h2>
-        <p>Manage settings here.</p>
-      </section>
-    </main>
-  </div>
-</body>
+
+  <script>
+    // Mock job orders data
+    let jobOrders = [
+      {
+        id: 'JO-2023-001',
+        employer: 'Al Faisal Hospital',
+        country: 'Saudi Arabia',
+        position: 'Registered Nurse',
+        vacancies: 25,
+        salary: '$1,200 - $1,500',
+        status: 'Active',
+        applicants: 18,
+        deadline: '2024-01-30',
+        datePosted: '2023-12-01',
+        requirements: [
+          'Bachelor of Science in Nursing',
+          'At least 2 years of hospital experience',
+          'PROMETRIC or HAAD exam passer',
+          'Valid nursing license',
+        ],
+        benefits: [
+          'Free accommodation',
+          'Transportation allowance',
+          'Medical insurance',
+          'Annual vacation with airfare',
+          '30 days paid leave annually',
+        ],
+        description:
+          'Al Faisal Hospital is seeking qualified Registered Nurses to join their expanding healthcare facility in Riyadh, Saudi Arabia. The candidate will be responsible for providing quality nursing care to patients, administering medications, and assisting doctors during procedures.',
+        contactPerson: 'Mohammed Al-Harbi',
+        contactEmail: 'recruitment@alfaisalhospital.sa',
+        contactPhone: '+966-11-234-5678',
+      },
+      {
+        id: 'JO-2023-002',
+        employer: 'Marina Bay Hotels & Resorts',
+        country: 'Singapore',
+        position: 'Hotel Housekeeping Staff',
+        vacancies: 15,
+        salary: 'SGD 1,400 - SGD 1,600',
+        status: 'Active',
+        applicants: 32,
+        deadline: '2024-01-15',
+        datePosted: '2023-11-25',
+        requirements: [
+          'High school graduate',
+          'At least 1 year experience in hotel housekeeping',
+          'Good command of English',
+          'Customer service oriented',
+        ],
+        benefits: [
+          'Free meals during duty',
+          'Accommodation assistance',
+          'Medical benefits',
+          'Annual performance bonus',
+          'Training opportunities',
+        ],
+        description:
+          'Marina Bay Hotels & Resorts is looking for dedicated Housekeeping Staff to maintain the cleanliness and presentation of our 5-star hotel rooms and facilities. The ideal candidate has attention to detail and excellent customer service skills.',
+        contactPerson: 'Grace Lim',
+        contactEmail: 'careers@marinabayhotels.sg',
+        contactPhone: '+65-6789-1234',
+      },
+     
+    ];
+
+    let filteredJobs = [...jobOrders];
+    let currentFilter = 'all';
+    let searchTerm = '';
+    let editingJobId = null;
+
+    const jobTableBody = document.querySelector('#jobTable tbody');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const jobSearchInput = document.getElementById('searchInput');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalContent = document.getElementById('modalContent');
+    const modalClose = document.getElementById('modalClose');
+    const btnAddJob = document.getElementById('btnAddJob');
+    const modalAddEditOverlay = document.getElementById('modalAddEditOverlay');
+    const modalAddEditClose = document.getElementById('modalAddEditClose');
+    const jobForm = document.getElementById('jobForm');
+    const cancelAddEdit = document.getElementById('cancelAddEdit');
+    const modalAddEditTitle = document.getElementById('modalAddEditTitle');
+    const submitJobBtn = document.getElementById('submitJobBtn');
+
+    // create status 
+    function createStatusBadge(status) {
+      const span = document.createElement('span');
+      span.classList.add('badge');
+      if (status.toLowerCase() === 'active') {
+        span.classList.add('badge-active');
+        span.textContent = 'Active';
+      } else if (status.toLowerCase() === 'pending approval') {
+        span.classList.add('badge-pending');
+        span.textContent = 'Pending Approval';
+      } else {
+        span.classList.add('badge-closed');
+        span.textContent = 'Closed';
+      }
+      return span;
+    }
+
+    // Render job orders table rows
+    function renderJobTable() {
+      jobTableBody.innerHTML = '';
+      filteredJobs.forEach(job => {
+        const tr = document.createElement('tr');
+        tr.classList.add('cursor-pointer');
+        tr.addEventListener('click', () => openJobDetails(job.id));
+
+        tr.innerHTML = `
+          <td>${job.id}</td>
+          <td>${job.position}</td>
+          <td>${job.employer}</td>
+          <td>${job.country}</td>
+          <td>${job.vacancies}</td>
+          <td></td>
+          <td>${job.deadline}</td>
+          <td><button class="btn btn-secondary btn-view" data-id="${job.id}">View</button></td>
+        `;
+
+        // Insert status badge
+        const statusTd = tr.children[5];
+        statusTd.appendChild(createStatusBadge(job.status));
+
+        // Prevent row click when clicking the button
+        tr.querySelector('.btn-view').addEventListener('click', e => {
+          e.stopPropagation();
+          openJobDetails(job.id);
+        });
+
+        jobTableBody.appendChild(tr);
+      });
+    }
+
+    // Filter and search jobs
+    function filterAndSearchJobs() {
+      filteredJobs = jobOrders.filter(job => {
+        if (currentFilter !== 'all' && job.status.toLowerCase() !== currentFilter) {
+          return false;
+        }
+        if (searchTerm) {
+          const term = searchTerm.toLowerCase();
+          return (
+            job.position.toLowerCase().includes(term) ||
+            job.employer.toLowerCase().includes(term) ||
+            job.country.toLowerCase().includes(term)
+          );
+        }
+        return true;
+      });
+      renderJobTable();
+    }
+
+    // Open job details modal
+    function openJobDetails(jobId) {
+      const job = jobOrders.find(j => j.id === jobId);
+      if (!job) return;
+      modalContent.innerHTML = `
+        <h3>${job.position} - ${job.employer}</h3>
+        <p><strong>Location:</strong> ${job.country}</p>
+        <p><strong>Vacancies:</strong> ${job.vacancies}</p>
+        <p><strong>Salary:</strong> ${job.salary}</p>
+        <p><strong>Status:</strong> ${job.status}</p>
+        <p><strong>Deadline:</strong> ${job.deadline}</p>
+        <h4>Description</h4>
+        <p>${job.description}</p>
+        <h4>Requirements</h4>
+        <ul>${job.requirements.map(r => `<li>${r}</li>`).join('')}</ul>
+        <h4>Benefits</h4>
+        <ul>${job.benefits.map(b => `<li>${b}</li>`).join('')}</ul>
+        <h4>Contact Information</h4>
+        <p><strong>Person:</strong> ${job.contactPerson}</p>
+        <p><strong>Email:</strong> ${job.contactEmail}</p>
+        <p><strong>Phone:</strong> ${job.contactPhone}</p>
+      `;
+      modalOverlay.classList.add('active');
+    }
+
+    // Close modals
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+      modalAddEditOverlay.classList.remove('active');
+      editingJobId = null;
+      jobForm.reset();
+      modalAddEditTitle.textContent = 'Add New Job Order';
+      submitJobBtn.textContent = 'Create Job Order';
+    }
+
+    // Open add/edit modal
+    function openAddEditModal(editJob = null) {
+      if (editJob) {
+        editingJobId = editJob.id;
+        modalAddEditTitle.textContent = 'Edit Job Order';
+        submitJobBtn.textContent = 'Update Job Order';
+        jobForm.position.value = editJob.position;
+        jobForm.employer.value = editJob.employer;
+        jobForm.country.value = editJob.country;
+        jobForm.salary.value = editJob.salary;
+        jobForm.vacancies.value = editJob.vacancies;
+        jobForm.deadline.value = editJob.deadline;
+        jobForm.status.value = editJob.status;
+        jobForm.description.value = editJob.description;
+        jobForm.contactPerson.value = editJob.contactPerson;
+        jobForm.contactEmail.value = editJob.contactEmail;
+        jobForm.contactPhone.value = editJob.contactPhone;
+      } else {
+        editingJobId = null;
+        jobForm.reset();
+        modalAddEditTitle.textContent = 'Add New Job Order';
+        submitJobBtn.textContent = 'Create Job Order';
+      }
+      modalAddEditOverlay.classList.add('active');
+    }
+
+    // Event listeners
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentFilter = btn.dataset.filter.toLowerCase();
+        filterAndSearchJobs();
+      });
+    });
+
+    jobSearchInput.addEventListener('input', e => {
+      searchTerm = e.target.value;
+      filterAndSearchJobs();
+    });
+
+    modalClose.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', e => {
+      if (e.target === modalOverlay) closeModal();
+    });
+
+    btnAddJob.addEventListener('click', () => openAddEditModal());
+    modalAddEditClose.addEventListener('click', closeModal);
+    cancelAddEdit.addEventListener('click', closeModal);
+    modalAddEditOverlay.addEventListener('click', e => {
+      if (e.target === modalAddEditOverlay) closeModal();
+    });
+
+    jobForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const newJob = {
+        id: editingJobId ? editingJobId : `JO-${Date.now()}`,
+        position: jobForm.position.value,
+        employer: jobForm.employer.value,
+        country: jobForm.country.value,
+        salary: jobForm.salary.value,
+        vacancies: parseInt(jobForm.vacancies.value, 10),
+        status: jobForm.status.value,
+        deadline: jobForm.deadline.value,
+        description: jobForm.description.value,
+        contactPerson: jobForm.contactPerson.value,
+        contactEmail: jobForm.contactEmail.value,
+        contactPhone: jobForm.contactPhone.value,
+        requirements: [],
+        benefits: [],
+        applicants: 0,
+        datePosted: new Date().toISOString().split('T')[0]
+      };
+      if (editingJobId) {
+        const idx = jobOrders.findIndex(j => j.id === editingJobId);
+        if (idx !== -1) jobOrders[idx] = newJob;
+      } else {
+        jobOrders.push(newJob);
+      }
+      filterAndSearchJobs();
+      closeModal();
+    });
+
+    // Initial render
+    filterAndSearchJobs();
+    
+    </script>
+
+        <section id="reports" class="page"></section>
+
+        <section id="notifications" class="page">
+          <h2>Notifications</h2>
+          <p>Your notifications appear here.</p>
+        </section>
+
+        <section id="tracker" class="page">
+          <h2>Application Tracker</h2>
+          <p>Track applications here.</p>
+        </section>
+
+        <section id="settings" class="page">
+          <h2>Settings</h2>
+          <p>Manage settings here.</p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const navLinks = document.querySelectorAll(".Alist a");
+        const pages = document.querySelectorAll(".page");
+
+        function activate(pageId) {
+          // hide all pages
+          pages.forEach((p) => p.classList.remove("active"));
+          // show page if exists
+          const target = document.getElementById(pageId);
+          if (target) target.classList.add("active");
+
+          // set active class on nav links
+          navLinks.forEach((link) => {
+            link.classList.toggle("active", link.dataset.page === pageId);
+          });
+        }
+
+        // click
+        navLinks.forEach((link) => {
+          link.addEventListener("click", function (e) {
+            e.preventDefault(); // prevent default anchor navigation
+            const page = this.dataset.page || "home";
+            // push hash so the back button works
+            location.hash = page;
+            activate(page);
+          });
+        });
+
+        // handle back/forward via hashchange
+        window.addEventListener("hashchange", () => {
+          const hash = location.hash.replace("#", "") || "home";
+          activate(hash);
+        });
+
+        // initial
+        const initial = location.hash.replace("#", "") || "home";
+        activate(initial);
+      });
+    </script>
+  </body>
 </html>
