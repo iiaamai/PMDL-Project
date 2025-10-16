@@ -38,6 +38,7 @@ if (isset($_POST['login'])) {
     if ($adminResult->num_rows > 0) {
         $row = $adminResult->fetch_assoc();
         $_SESSION['admin_email'] = $row['email'];
+        echo 'ALksbdafgh';
         header("Location: /PMDL-PROJECT/admin.php");
         exit();
     }
