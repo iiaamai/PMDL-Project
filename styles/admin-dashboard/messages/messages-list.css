@@ -14,6 +14,7 @@
   border-radius: 10px;
 }
 .messages-conversation {
+  padding: 10px;
   display: flex;
   border-left: #f3f4f6 solid 2px;
   background-color: white;
@@ -63,6 +64,7 @@ h3 {
   margin-top: 15px;
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 .conversation {
   display: flex;
@@ -75,8 +77,15 @@ h3 {
   align-items: center;
   padding-right: 5px;
 }
+.conversation:hover {
+  cursor: pointer;
+  background-color: #f3f4f6;
+}
 .convo-notif {
   background-color: #fef2f2;
+}
+.convo-notif:hover {
+  background-color: #ffe6e6;
 }
 .notif {
   display: none;
@@ -118,30 +127,4 @@ h3 {
   color: gray;
   margin: 0;
   margin-top: 10px;
-}
-/*Conversation*/
-.messages-conversation .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.messages-conversation .image-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #f3f4f6;
-  border-radius: 50%;
-  width: 10vh;
-  height: 10vh;
-  padding: 10px;
-  margin-bottom: 10px;
-}
-.messages-conversation img {
-  width: 70%;
-  object-fit: contain;
-  box-sizing: border-box;
-  margin: 0;
-}
-.message-error {
-  text-align: center;
 }

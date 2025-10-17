@@ -17,10 +17,13 @@ $userEmail = $_SESSION['admin_email'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ADMIN</title>
     <link rel="stylesheet" href="styles/admin-dashboard/admin.css" />
-    <link rel="stylesheet" href="styles/admin-dashboard/messages.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/joborder.css" />
     <link rel="stylesheet" href="styles/global/global.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/jobOrder.css" />
+    <!-- Messages Section CSS -->
+    <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-list.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-error.css" />
   </head>
 
   <body>
@@ -220,20 +223,209 @@ $userEmail = $_SESSION['admin_email'];
                   </div>
                   <span class="notif">🔴</span>
                 </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
+                <div class="conversation">
+                  <img src="images/icons/sample-profile.jpg" alt="" />
+                  <div class="details">
+                    <div>
+                      <h4 class="name">Pedro Lim</h4>
+                      <span class="time">Dec 10</span>
+                    </div>
+                    <p class="chat">My Flight is confirmed for January 15th</p>
+                  </div>
+                  <span class="notif">🔴</span>
+                </div>
               </div>
             </div>
-            <div class="messages-conversation">
-              <div class="container">
-                <div class="image-container">
-                  <img src="images/icons/message-icon.svg" alt="" />
+            <div class="messages-conversation messages-conversation-js">
+              <div class="conversation-container">
+                <div class="conversation-name">
+                  <img src="images/icons/sample-profile.jpg" alt="" class="chat-profile">
+                  <div class="chat-details">
+                    <h3 class="chat-name">Maria Santos</h3>
+                    <p class="chat-status">Online</p>
+                  </div>
                 </div>
-                <div class="message-error">
-                  <h3>Your Messages</h3>
-                  <p>Select a conversation to start messaging</p>
+
+                <div class="conversation-chat">
+                  <div class="conversation-messages">
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-reply">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
+                        </p>
+                        <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
+                      </div>
+                    </div>
+                    <div class="chat-sent">
+                      <div class = "conversatrion-message">
+                        <p>
+                          Thank you for the update, Maria. We will process your OEC within 3-5 business days.
+                        </p>
+                         <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="conversation-type-message">
+                  <span class="attach">
+                    <img class="message-type-icon" src="images/icons/attach-file-icon.svg">
+                  </span>
+                  <input type="text" class="message-type" placeholder="Type here...">
+                  <span class="send">
+                    <img class="message-type-icon" src="images/icons/send-icon.svg">
+                  </span>
                 </div>
               </div>
             </div>
           </div>
+          <script src = "jsfile/admin-dashboard/messages.js"></script>
         </section>
 
         <section id="jobs" class="page">
