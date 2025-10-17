@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 
@@ -9,7 +10,6 @@ if (!isset($_SESSION['admin_email'])) {
 
 $userEmail = $_SESSION['admin_email'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -169,10 +169,10 @@ $userEmail = $_SESSION['admin_email'];
               <div class="list-header">
                 <h3>Messages</h3>
                 <div class="search">
+                  <span>
+                    <img src="images/icons/search-icon.svg" alt="Search"/>
+                  </span>
                   <input type="text" placeholder="Search..." />
-                  <span
-                    ><img src="images/icons/search-icon.svg" alt="Search"
-                  /></span>
                 </div>
               </div>
               <div class="lists">
@@ -270,90 +270,87 @@ $userEmail = $_SESSION['admin_email'];
               <!-- Job rows inserted here -->
             </tbody>
           </table>
-        </div>
 
-        <!-- Job Details Modal -->
-        <div id="modalOverlay" class="modal-overlay">
-          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-            <div class="modal-header">
-              <h2 id="modalTitle">Job Details</h2>
-              <button id="modalClose" class="modal-close" aria-label="Close modal">&times;</button>
-            </div>
-            <div id="modalContent">
-              <!-- Job details inserted here -->
+          <!-- Job Details Modal -->
+          <div id="modalOverlay" class="modal-overlay">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+              <div class="modal-header">
+                <h2 id="modalTitle">Job Details</h2>
+                <button id="modalClose" class="modal-close" aria-label="Close modal">&times;</button>
+              </div>
+              <div id="modalContent">
+                <!-- Job details inserted here -->
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Add/Edit Job Modal -->
-        <div id="modalAddEditOverlay" class="modal-overlay">
-          <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalAddEditTitle">
-            <div class="modal-header">
-              <h2 id="modalAddEditTitle">Add New Job Order</h2>
-              <button id="modalAddEditClose" class="modal-close" aria-label="Close modal">&times;</button>
+          <!-- Add/Edit Job Modal -->
+          <div id="modalAddEditOverlay" class="modal-overlay">
+            <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalAddEditTitle">
+              <div class="modal-header">
+                <h2 id="modalAddEditTitle">Add New Job Order</h2>
+                <button id="modalAddEditClose" class="modal-close" aria-label="Close modal">&times;</button>
+              </div>
+              <form id="jobForm">
+                <div class="form-group">
+                  <label for="positionInput">Position Title*</label>
+                  <input type="text" id="positionInput" name="position" required />
+                </div>
+                <div class="form-group">
+                  <label for="employerInput">Employer/Company*</label>
+                  <input type="text" id="employerInput" name="employer" required />
+                </div>
+                <div class="form-group">
+                  <label for="countryInput">Country*</label>
+                  <input type="text" id="countryInput" name="country" required />
+                </div>
+                <div class="form-group">
+                  <label for="salaryInput">Salary Range*</label>
+                  <input type="text" id="salaryInput" name="salary" required placeholder="e.g. $1,200 - $1,500" />
+                </div>
+                <div class="form-group">
+                  <label for="vacanciesInput">Number of Vacancies*</label>
+                  <input type="number" id="vacanciesInput" name="vacancies" min="1" required />
+                </div>
+                <div class="form-group">
+                  <label for="deadlineInput">Application Deadline*</label>
+                  <input type="date" id="deadlineInput" name="deadline" required />
+                </div>
+                <div class="form-group">
+                  <label for="statusInput">Status*</label>
+                  <select id="statusInput" name="status" required>
+                    <option value="Active">Active</option>
+                    <option value="Pending Approval">Pending Approval</option>
+                    <option value="Closed">Closed</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="descriptionInput">Job Description*</label>
+                  <textarea id="descriptionInput" name="description" rows="4" required></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="contactPersonInput">Contact Person*</label>
+                  <input type="text" id="contactPersonInput" name="contactPerson" required />
+                </div>
+                <div class="form-group">
+                  <label for="contactEmailInput">Contact Email*</label>
+                  <input type="email" id="contactEmailInput" name="contactEmail" required />
+                </div>
+                <div class="form-group">
+                  <label for="contactPhoneInput">Contact Phone*</label>
+                  <input type="text" id="contactPhoneInput" name="contactPhone" required />
+                </div>
+                <div style="text-align: right;">
+                  <button type="button" id="cancelAddEdit" class="btn btn-secondary">Cancel</button>
+                  <button type="submit" class="btn btn-primary" id="submitJobBtn">Create Job Order</button>
+                </div>
+              </form>
             </div>
-            <form id="jobForm">
-              <div class="form-group">
-                <label for="positionInput">Position Title*</label>
-                <input type="text" id="positionInput" name="position" required />
-              </div>
-              <div class="form-group">
-                <label for="employerInput">Employer/Company*</label>
-                <input type="text" id="employerInput" name="employer" required />
-              </div>
-              <div class="form-group">
-                <label for="countryInput">Country*</label>
-                <input type="text" id="countryInput" name="country" required />
-              </div>
-              <div class="form-group">
-                <label for="salaryInput">Salary Range*</label>
-                <input type="text" id="salaryInput" name="salary" required placeholder="e.g. $1,200 - $1,500" />
-              </div>
-              <div class="form-group">
-                <label for="vacanciesInput">Number of Vacancies*</label>
-                <input type="number" id="vacanciesInput" name="vacancies" min="1" required />
-              </div>
-              <div class="form-group">
-                <label for="deadlineInput">Application Deadline*</label>
-                <input type="date" id="deadlineInput" name="deadline" required />
-              </div>
-              <div class="form-group">
-                <label for="statusInput">Status*</label>
-                <select id="statusInput" name="status" required>
-                  <option value="Active">Active</option>
-                  <option value="Pending Approval">Pending Approval</option>
-                  <option value="Closed">Closed</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="descriptionInput">Job Description*</label>
-                <textarea id="descriptionInput" name="description" rows="4" required></textarea>
-              </div>
-              <div class="form-group">
-                <label for="contactPersonInput">Contact Person*</label>
-                <input type="text" id="contactPersonInput" name="contactPerson" required />
-              </div>
-              <div class="form-group">
-                <label for="contactEmailInput">Contact Email*</label>
-                <input type="email" id="contactEmailInput" name="contactEmail" required />
-              </div>
-              <div class="form-group">
-                <label for="contactPhoneInput">Contact Phone*</label>
-                <input type="text" id="contactPhoneInput" name="contactPhone" required />
-              </div>
-              <div style="text-align: right;">
-                <button type="button" id="cancelAddEdit" class="btn btn-secondary">Cancel</button>
-                <button type="submit" class="btn btn-primary" id="submitJobBtn">Create Job Order</button>
-              </div>
-            </form>
           </div>
-        </div>
-        <!-- JAVASCRIOPT FILE -->
-        <script src = "jsfile/admin-dashboard/jobOrder.js"> </script>
+          <!-- JAVASCRIOPT FILE -->
+          <script src = "jsfile/admin-dashboard/jobOrder.js"> </script>
 
         </section>
-
-
 
         <section id="reports" class="page"></section>
 
