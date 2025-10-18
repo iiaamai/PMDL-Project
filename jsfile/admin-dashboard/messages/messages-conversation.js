@@ -1,6 +1,6 @@
 export function renderMessagesConversation() {
   const chatContainer = document.querySelector(".messages-conversation-js");
-  const isConversationEmpty = false;
+  const isConversationEmpty = true;
 
   if (isConversationEmpty) {
     chatContainer.innerHTML = `

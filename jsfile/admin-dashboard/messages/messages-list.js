@@ -1,6 +1,6 @@
 export function renderMessagesList() {
   const messagesListContainer = document.querySelector(".messages-list-js");
-  const isMessagesListEmpty = false;
+  const isMessagesListEmpty = true;
 
   if (isMessagesListEmpty) {
     messagesListContainer.innerHTML = `
