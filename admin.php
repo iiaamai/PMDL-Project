@@ -170,7 +170,15 @@ $userEmail = $_SESSION['admin_email'];
         <section id="messages" class="page">
           <div class="messages-container">
             <div class="messages-list messages-list-js">
-              
+              <div class="list-header">
+                <h3>Messages</h3>
+                <div class="search">
+                  <span>
+                    <img src="images/icons/search-icon.svg" alt="Search"/>
+                  </span>
+                  <input type="text" placeholder="Search..." />
+                </div>
+              </div>
             </div>
             <div class="messages-conversation messages-conversation-js">
               

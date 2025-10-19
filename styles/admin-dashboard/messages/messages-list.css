@@ -77,6 +77,8 @@ h3 {
   border-color: #f3f4f6;
   align-items: center;
   padding-right: 5px;
+  min-height: 60px; /* keep fixed min height instead of vh if desired */
+  overflow: hidden; /* prevent children from forcing container bigger */
 }
 .conversation:hover {
   cursor: pointer;
@@ -107,6 +109,7 @@ h3 {
   justify-content: center;
   width: 100%;
   padding: 10px;
+  min-width: 0; /* allow children to shrink for text-overflow to work */
 }
 .details div {
   display: flex;
@@ -128,4 +131,11 @@ h3 {
   color: gray;
   margin: 0;
   margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* change to 1 for single-line */
+  line-clamp: 2;
+  white-space: normal; /* allow wrapping up to clamp */
 }
