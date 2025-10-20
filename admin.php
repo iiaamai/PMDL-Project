@@ -177,6 +177,12 @@ $userEmail = $_SESSION['admin_email'];
                     <img src="images/icons/search-icon.svg" alt="Search"/>
                   </span>
                   <input type="text" placeholder="Search..." />
+                  <div class="search-result">
+                    <div class="profile">
+                      <img src="./images/icons/sample-profile.jpg" alt="User Profile" />
+                      <h4>Juan Dela Cruz</h4>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

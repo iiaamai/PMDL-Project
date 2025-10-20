@@ -27,6 +27,9 @@ export function renderMessagesList(loggedInUser) {
       ${renderChatList()}
     </div>
   `;
+  document.querySelector(".search input").addEventListener("keydown", (e) => {
+    const searchTerm = e.target.value.toLowerCase();
+  });
   function renderChatList() {
     let html = "";
     userChats.forEach((chat) => {
@@ -42,7 +45,7 @@ export function renderMessagesList(loggedInUser) {
               </span>
             </div>
             <p class="chat">
-              ${getLatestMessage(messages).message}
+              ${getLatestMessage(messages, loggedInUser.id).message}
             </p>
           </div>
           <span class="notif">🔴</span>

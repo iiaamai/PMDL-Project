@@ -192,13 +192,16 @@ export function getChatMessages(chatId) {
   return messages;
 }
 
-export function getLatestMessage(messages) {
+export function getLatestMessage(messages, userId) {
   let latestMessage = messages[0];
   messages.forEach((message) => {
     if (message.timestamp > latestMessage.timestamp) {
       latestMessage = message;
     }
   });
+  if (userId === latestMessage.senderId) {
+    latestMessage.message = "You: " + latestMessage.message;
+  }
   return latestMessage;
 }
 

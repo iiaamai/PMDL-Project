@@ -6,8 +6,18 @@ class user {
   #birthDate;
   #email;
   #password;
+  #profilePicture;
 
-  constructor(id, lastName, firstName, middleName, birthDate, email, password) {
+  constructor(
+    id,
+    lastName,
+    firstName,
+    middleName,
+    birthDate,
+    email,
+    password,
+    profilePicture
+  ) {
     this.#id = id;
     this.#lastName = lastName;
     this.#firstName = firstName;
@@ -15,6 +25,7 @@ class user {
     this.#birthDate = birthDate;
     this.#email = email;
     this.#password = password;
+    this.#profilePicture = profilePicture;
   }
 
   // Getters
@@ -39,6 +50,9 @@ class user {
   get password() {
     return this.#password;
   }
+  get profilePicture() {
+    return this.#profilePicture;
+  }
 
   // Setters
   set id(v) {
@@ -62,6 +76,9 @@ class user {
   set password(v) {
     this.#password = v;
   }
+  set profilePicture(v) {
+    this.#profilePicture = v;
+  }
 }
 
 export const users = [
@@ -72,7 +89,8 @@ export const users = [
     "A",
     "1990-01-01",
     "john.doe@example.com",
-    "pass1"
+    "pass1",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     2,
@@ -81,7 +99,8 @@ export const users = [
     "B",
     "1992-05-15",
     "jane.smith@example.com",
-    "pass2"
+    "pass2",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     3,
@@ -90,7 +109,8 @@ export const users = [
     "C",
     "1988-09-03",
     "alice.brown@example.com",
-    "pass3"
+    "pass3",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     4,
@@ -99,7 +119,8 @@ export const users = [
     "D",
     "1995-12-20",
     "bob.wilson@example.com",
-    "pass4"
+    "pass4",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     5,
@@ -108,7 +129,8 @@ export const users = [
     "E",
     "1987-07-11",
     "carlos.martinez@example.com",
-    "pass5"
+    "pass5",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     6,
@@ -117,7 +139,8 @@ export const users = [
     "F",
     "1993-03-22",
     "sophie.lee@example.com",
-    "pass6"
+    "pass6",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     7,
@@ -126,7 +149,8 @@ export const users = [
     "G",
     "1991-11-08",
     "amit.patel@example.com",
-    "pass7"
+    "pass7",
+    "images/icons/sample-profile.jpg"
   ),
   new user(
     8,
@@ -135,7 +159,8 @@ export const users = [
     "H",
     "1994-06-30",
     "maria.garcia@example.com",
-    "pass8"
+    "pass8",
+    "images/icons/sample-profile.jpg"
   ),
 ];
 
