@@ -169,7 +169,6 @@ export function getUser(userId) {
   users.forEach((user) => {
     if (user.id === userId) {
       returnUser = user;
-      console.log(returnUser);
     }
   });
   return returnUser;

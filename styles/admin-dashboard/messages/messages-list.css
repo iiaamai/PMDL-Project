@@ -64,7 +64,7 @@ h3 {
 .search-result {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
   font-size: 14px;
   background-color: white;
   border: #f3f4f6 solid 2px;
@@ -80,9 +80,8 @@ h3 {
   transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 
-.search:focus-within .search-result {
+.search-result-popup {
   opacity: 1;
-
   justify-content: start;
   pointer-events: auto; /* Clickable */
   visibility: visible; /* Can be interacted with */

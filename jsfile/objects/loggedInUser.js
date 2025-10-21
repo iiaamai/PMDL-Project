@@ -1,3 +1,3 @@
 import { users } from "./users.js";
 
-export const loggedInUser = users[3];
+export const loggedInUser = users[2];

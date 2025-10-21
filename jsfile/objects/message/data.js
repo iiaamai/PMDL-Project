@@ -156,16 +156,14 @@ export function getChats(userId) {
   });
   return result;
 }
-export function setChatName(loggedInUser, chats) {
+export function setChatName(loggedInUser, chat) {
   let chatName = " ";
-  chats.forEach((chat) => {
-    const members = getChatMembers(chat.id);
-    members.forEach((member) => {
-      if (member.userId !== loggedInUser.id) {
-        const memberUser = getUser(member.userId);
-        chatName = `${memberUser.firstName} ${memberUser.lastName}`;
-      }
-    });
+  const members = getChatMembers(chat.id);
+  members.forEach((member) => {
+    if (member.userId !== loggedInUser.id) {
+      const memberUser = getUser(member.userId);
+      chatName = `${memberUser.firstName} ${memberUser.lastName}`;
+    }
   });
 
   return chatName;
@@ -178,8 +176,15 @@ function getChatMembers(chatId) {
       members.push(member);
     }
   });
-  console.log(members);
   return members;
+}
+export function isChatExist(loggedInUserId, userId) {
+  //Nag lagay ako comments nalilito ako sa mga shortcuts
+  return chats.some((chat) => {
+    const members = chatMembersList.filter((m) => m.chatId === chat.id); // returns members on the existing chat
+    const memberIds = members.map((m) => m.userId); // returns the userId's of the existing chat
+    return memberIds.includes(loggedInUserId) && memberIds.includes(userId); // if it has the loggedInUserId and the userId it returns true
+  });
 }
 
 export function getChatMessages(chatId) {
@@ -193,6 +198,7 @@ export function getChatMessages(chatId) {
 }
 
 export function getLatestMessage(messages, userId) {
+  if (messages.length === 0) return "New Chat.";
   let latestMessage = messages[0];
   messages.forEach((message) => {
     if (message.timestamp > latestMessage.timestamp) {
@@ -206,6 +212,7 @@ export function getLatestMessage(messages, userId) {
 }
 
 export function formatTime(message) {
+  if (!message) return "";
   return message.timestamp.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
