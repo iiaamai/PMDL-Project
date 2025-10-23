@@ -9,13 +9,13 @@ import {
   isChatExist,
 } from "../../objects/message/data.js";
 import { users } from "../../objects/users.js";
-import { chat, message, chatMembers } from "../../objects/message/objects.js";
+import { chat, chatMembers } from "../../objects/message/objects.js";
 
-export function renderMessagesList(loggedInUser) {
+export function renderMessagesList(loggedInUser, renderConversation) {
   const messagesListContainer = document.querySelector(".messages-list-js");
 
   messagesListContainer.innerHTML = "";
-  console.log("Logged User: ", loggedInUser.firstName);
+  console.log("chat list - Logged User: ", loggedInUser.firstName);
   const userChats = getChats(loggedInUser.id);
 
   if (userChats.length === 0) {
@@ -58,6 +58,7 @@ export function renderMessagesList(loggedInUser) {
       ${renderChatList()}
     </div>
   `;
+  openConversation();
 
   let timeout;
   const searchResult = document.querySelector(".search-result");
@@ -111,11 +112,16 @@ export function renderMessagesList(loggedInUser) {
       let latestMessage = "New Chat.";
 
       if (messages && messages.length > 0) {
-        timestamp = formatTime(getLatestMessage(messages));
-        latestMessage = getLatestMessage(messages, loggedInUser.id).message;
+        const latestMsg = getLatestMessage(messages);
+        timestamp = formatTime(latestMsg);
+        if (loggedInUser.id === latestMsg.senderId) {
+          latestMessage = "You: " + latestMsg.message;
+        } else {
+          latestMessage = latestMsg.message;
+        }
       }
       html += `
-        <div class="conversation" data-chat-id="${chat.id}">
+        <div class="conversation conversation-js" data-chat-id="${chat.id}">
           <img src="images/icons/sample-profile.jpg" alt="" />
           <div class="details">
             <div>
@@ -165,7 +171,16 @@ export function renderMessagesList(loggedInUser) {
         chatMembersList.push(newChatMembers1);
         chatMembersList.push(newChatMembers2);
         searchResult.classList.remove("search-result-popup");
-        renderMessagesList(loggedInUser);
+        renderMessagesList(loggedInUser, renderConversation);
+      });
+    });
+  }
+  function openConversation() {
+    document.querySelectorAll(".conversation-js").forEach((convo) => {
+      convo.addEventListener("click", () => {
+        const chatId = Number(convo.dataset.chatId);
+        console.log(chatId);
+        renderConversation(loggedInUser, chatId);
       });
     });
   }

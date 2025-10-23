@@ -25,6 +25,7 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-error.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-list-error.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-new.css" />
   </head>
 
   <body>
@@ -45,11 +46,6 @@ $userEmail = $_SESSION['admin_email'];
           <li>
             <a href="#notifications" data-page="notifications" role="menuitem"
               >Notifications</a
-            >
-          </li>
-          <li>
-            <a href="#tracker" data-page="tracker" role="menuitem"
-              >Application Tracker</a
             >
           </li>
           <li>
@@ -300,11 +296,6 @@ $userEmail = $_SESSION['admin_email'];
         <section id="notifications" class="page">
           <h2>Notifications</h2>
           <p>Your notifications appear here.</p>
-        </section>
-
-        <section id="tracker" class="page">
-          <h2>Application Tracker</h2>
-          <p>Track applications here.</p>
         </section>
 
         <section id="settings" class="page">

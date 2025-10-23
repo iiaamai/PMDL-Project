@@ -141,7 +141,7 @@ export const chatMembersList = [
   new chatMembers(8, 4, users[7].id), // Maria
 ];
 
-function getChat(chatId) {
+export function getChat(chatId) {
   const chat = chats.find((c) => c.id === chatId);
   return chat;
 }
@@ -197,7 +197,7 @@ export function getChatMessages(chatId) {
   return messages;
 }
 
-export function getLatestMessage(messages, userId) {
+export function getLatestMessage(messages) {
   if (messages.length === 0) return "New Chat.";
   let latestMessage = messages[0];
   messages.forEach((message) => {
@@ -205,9 +205,6 @@ export function getLatestMessage(messages, userId) {
       latestMessage = message;
     }
   });
-  if (userId === latestMessage.senderId) {
-    latestMessage.message = "You: " + latestMessage.message;
-  }
   return latestMessage;
 }
 
@@ -218,4 +215,17 @@ export function formatTime(message) {
     minute: "2-digit",
     hour12: true,
   });
+}
+
+export function getConversationWith(chat, loggedInUser) {
+  let user = " ";
+  const members = getChatMembers(chat.id);
+  members.forEach((member) => {
+    if (member.userId !== loggedInUser.id) {
+      const memberUser = getUser(member.userId);
+      user = memberUser;
+    }
+  });
+
+  return user;
 }

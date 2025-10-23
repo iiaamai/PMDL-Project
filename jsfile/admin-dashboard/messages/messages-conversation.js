@@ -1,8 +1,18 @@
-export function renderMessagesConversation() {
-  const chatContainer = document.querySelector(".messages-conversation-js");
-  const isConversationEmpty = true;
+import {
+  getChat,
+  getConversationWith,
+  setChatName,
+  getChatMessages,
+  formatTime,
+} from "../../objects/message/data.js";
 
-  if (isConversationEmpty) {
+export function renderMessagesConversation(loggedInUser, chatId = null) {
+  console.log("conversation - Logged User: ", loggedInUser.firstName);
+  const chat = chatId ? getChat(chatId) : null;
+
+  const chatContainer = document.querySelector(".messages-conversation-js");
+
+  if (!chat) {
     chatContainer.innerHTML = `
     <div class="conversation-container-error">
       <div class="conversation-image-container-error">
@@ -16,16 +26,18 @@ export function renderMessagesConversation() {
     `;
     return;
   }
-
-  function initScroll() {
-    scrollConversationToBottom();
-    window.addEventListener("load", scrollConversationToBottom);
-  }
+  const user = getConversationWith(chat, loggedInUser);
+  const messages = getChatMessages(chat.id);
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", initScroll);
   } else {
     initScroll();
+  }
+
+  function initScroll() {
+    scrollConversationToBottom();
+    window.addEventListener("load", scrollConversationToBottom);
   }
 
   function scrollConversationToBottom() {
@@ -36,83 +48,81 @@ export function renderMessagesConversation() {
 
   chatContainer.innerHTML = `
     <div class="conversation-container">
-      <div class="conversation-name">
-        <img src="images/icons/sample-profile.jpg" alt="" class="chat-profile">
-        <div class="chat-details">
-          <h3 class="chat-name">Maria Santos</h3>
-          <p class="chat-status">Online</p>
-        </div>
-      </div>
+      ${renderConversationHeader()}
 
       <div class="conversation-chat">
         <div class="conversation-messages">
-          <div class="chat-reply">
-            <div class = "conversatrion-message">
-              <p>
-                Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
-              </p>
-              <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-sent">
-            <div class = "conversatrion-message">
-              <p>
-                Thank you for the update, Maria. We will process your OEC within 3-5 business days.
-              </p>
-                <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-reply">
-            <div class = "conversatrion-message">
-              <p>
-                Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
-              </p>
-              <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-sent">
-            <div class = "conversatrion-message">
-              <p>
-                Thank you for the update, Maria. We will process your OEC within 3-5 business days.
-              </p>
-                <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-reply">
-            <div class = "conversatrion-message">
-              <p>
-                Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
-              </p>
-              <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-sent">
-            <div class = "conversatrion-message">
-              <p>
-                Thank you for the update, Maria. We will process your OEC within 3-5 business days.
-              </p>
-                <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-reply">
-            <div class = "conversatrion-message">
-              <p>
-                Hello Admin, I have submitted my medical certificate. When can I expect my OEC to be processed?
-              </p>
-              <p class="time-stamp">9:30 AM<span class="isRead">&#10003&#10003</span></p>
-            </div>
-          </div>
-          <div class="chat-sent">
-            <div class = "conversatrion-message">
-              <p>
-                Thank you for the update, Maria. We will process your OEC within 3-5 business days.
-              </p>
-                <p class="time-stamp">9:35 AM<span class="isRead">&#10003</span></p>
-            </div>
-          </div>
+          ${renderConversationMessages()}
         </div>
       </div>
 
+      ${renderConversationFooter()}
+    </div>
+    `;
+  const conversationMessages = document.querySelector(".conversation-messages");
+  if (messages.length === 0 && conversationMessages) {
+    conversationMessages.classList.add("conversation-messages-new");
+  }
+  function renderConversationHeader() {
+    const html = `
+      <div class="conversation-name">
+        <img src="images/icons/sample-profile.jpg" alt="" class="chat-profile">
+        <div class="chat-details">
+          <h3 class="chat-name">${setChatName(loggedInUser, chat)}</h3>
+          <p class="chat-status">
+          ${user.isOnline ? "🟢 Online" : "🔘 Offline"}
+          </p>
+        </div>
+      </div>
+    `;
+    return html;
+  }
+  function renderConversationMessages() {
+    let html = "";
+    if (messages.length === 0) {
+      html = `
+      <div class="conversation-image-container-new">
+        <img class = "conversation-image-new" src="images/icons/new-message-icon.svg" alt="" />
+      </div>
+      <div class="conversation-message-new">
+        <h3>New Chat</h3>
+        <p>Send a message to start conversation</p>
+      </div>
+      `;
+      return html;
+    }
+    messages.forEach((message) => {
+      const text = message.message;
+      const timeStamp = formatTime(message);
+      const isRead = message.isRead ? "&#10003&#10003" : "&#10003";
+      if (message.senderId === loggedInUser.id) {
+        html += `
+        <div class="chat-sent">
+          <div class = "conversatrion-message">
+            <p>
+             ${text}
+            </p>
+              <p class="time-stamp">${timeStamp}<span class="isRead">${isRead}</span></p>
+          </div>
+        </div>
+      `;
+      } else {
+        html += `
+       <div class="chat-reply">
+          <div class = "conversatrion-message">
+            <p>
+              ${text}
+            </p>
+            <p class="time-stamp">${timeStamp}<span class="isRead">${isRead}</span></p>
+          </div>
+        </div>
+      `;
+      }
+    });
+    return html;
+  }
+  function renderConversationFooter() {
+    const html = `
       <div class="conversation-type-message">
         <span class="attach">
           <img class="message-type-icon" src="images/icons/attach-file-icon.svg">
@@ -122,6 +132,7 @@ export function renderMessagesConversation() {
           <img class="message-type-icon" src="images/icons/send-icon.svg">
         </span>
       </div>
-    </div>
     `;
+    return html;
+  }
 }
