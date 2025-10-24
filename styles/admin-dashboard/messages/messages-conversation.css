@@ -120,6 +120,13 @@
   border-radius: 50%;
   background-color: #e5e7eb;
   margin-left: 30px;
+  transition: transform 0.1s ease-in;
+}
+.send:hover {
+  background-color: #d1d5db;
+}
+.send:active {
+  transform: translateY(4px);
 }
 .messages-conversation,
 .messages-conversation-js {

@@ -1,10 +1,12 @@
 import {
+  chatMessages,
   getChat,
   getConversationWith,
   setChatName,
   getChatMessages,
   formatTime,
 } from "../../objects/message/data.js";
+import { message } from "../../objects/message/objects.js";
 
 export function renderMessagesConversation(loggedInUser, chatId = null) {
   console.log("conversation - Logged User: ", loggedInUser.firstName);
@@ -29,12 +31,15 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
   const user = getConversationWith(chat, loggedInUser);
   const messages = getChatMessages(chat.id);
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initScroll);
-  } else {
-    initScroll();
-  }
+  initScrollListener();
 
+  function initScrollListener() {
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initScroll);
+    } else {
+      initScroll();
+    }
+  }
   function initScroll() {
     scrollConversationToBottom();
     window.addEventListener("load", scrollConversationToBottom);
@@ -62,6 +67,35 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
   const conversationMessages = document.querySelector(".conversation-messages");
   if (messages.length === 0 && conversationMessages) {
     conversationMessages.classList.add("conversation-messages-new");
+  }
+  document
+    .querySelector(".send-message-js")
+    .addEventListener("click", sendMessage);
+  document.querySelector(".message-type").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  function sendMessage() {
+    const messageInput = document.querySelector(".message-type");
+    const messageText = messageInput.value.trim();
+    if (messageText === "") return;
+    console.log(messageText);
+    const newMessage = new message(
+      chatMessages.length + 1,
+      chat.id,
+      loggedInUser.id,
+      messageText,
+      Date.now(),
+      false
+    );
+    chatMessages.push(newMessage);
+    renderMessagesConversation(loggedInUser, chat.id);
+    messageInput.value = "";
+    initScrollListener();
+    setTimeout(() => {
+      const newInput = document.querySelector(".message-type");
+      if (newInput) newInput.focus();
+    }, 0);
   }
   function renderConversationHeader() {
     const html = `
@@ -128,7 +162,7 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
           <img class="message-type-icon" src="images/icons/attach-file-icon.svg">
         </span>
         <input type="text" class="message-type" placeholder="Type here...">
-        <span class="send">
+        <span class="send send-message-js">
           <img class="message-type-icon" src="images/icons/send-icon.svg">
         </span>
       </div>
