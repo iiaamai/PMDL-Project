@@ -1,19 +1,12 @@
 import { users } from "../../objects/users.js";
-import { chat, chatMembers } from "../../objects/message/objects.js";
 import { chatManager } from "../../objects/message/data copy.js";
 
 export function renderMessagesList(loggedInUser, renderConversation) {
-  console.log(chatManager.chats);
   const messagesListContainer = document.querySelector(".messages-list-js");
 
   messagesListContainer.innerHTML = "";
-  console.log(
-    "chat list - Logged User: ",
-    loggedInUser.firstName,
-    loggedInUser.id
-  );
+
   const userChats = chatManager.getChats(loggedInUser.id);
-  console.log(userChats);
 
   if (userChats.length === 0) {
     messagesListContainer.innerHTML += `
@@ -105,12 +98,12 @@ export function renderMessagesList(loggedInUser, renderConversation) {
     let html = "";
     userChats.forEach((chat) => {
       const messages = chatManager.getChatMessages(chat.id);
-      let timestamp = "";
+      let timestamp = chatManager.formatTime(chat.createdAt);
       let latestMessage = "New Chat.";
 
       if (messages && messages.length > 0) {
         const latestMsg = chatManager.getLatestMessage(messages);
-        timestamp = chatManager.formatTime(latestMsg);
+        timestamp = chatManager.formatTime(latestMsg.timestamp);
         if (loggedInUser.id === latestMsg.senderId) {
           latestMessage = "You: " + latestMsg.message;
         } else {
@@ -166,7 +159,7 @@ export function renderMessagesList(loggedInUser, renderConversation) {
       convo.addEventListener("click", () => {
         const chatId = Number(convo.dataset.chatId);
         console.log(chatId);
-        renderConversation(loggedInUser, chatId);
+        renderConversation(loggedInUser, chatId, renderMessagesList);
       });
     });
   }

@@ -1,5 +1,4 @@
-import { chat, message, chatMembers } from "./objects.js";
-import { users, getUser } from "../users.js";
+import { users } from "../users.js";
 
 export class ChatManager {
   constructor() {
@@ -180,14 +179,47 @@ export class ChatManager {
   }
 
   getChats(userId) {
-    const result = [];
-    this.chatMembers.forEach((member) => {
+    // Step 1: Find chats that include the user
+    const userChats = [];
+
+    for (const member of this.chatMembers) {
       if (member.userId === userId) {
-        const chat = this.getChat(member.chatId);
-        if (chat) result.push(chat);
+        const chat = this.chats.find((c) => c.id === member.chatId);
+        if (chat) {
+          userChats.push(chat);
+        }
       }
+    }
+
+    // Step 2: Sort chats by latest message (newest first)
+    userChats.sort((chatA, chatB) => {
+      // Get all messages for each chat
+      const messagesA = this.chatMessages.filter((m) => m.chatId === chatA.id);
+      const messagesB = this.chatMessages.filter((m) => m.chatId === chatB.id);
+
+      // Find latest message time or use chat creation time
+      let latestA;
+      if (messagesA.length > 0) {
+        const lastMessageA = messagesA[messagesA.length - 1];
+        latestA = lastMessageA.timestamp;
+      } else {
+        latestA = chatA.createdAt;
+      }
+
+      let latestB;
+      if (messagesB.length > 0) {
+        const lastMessageB = messagesB[messagesB.length - 1];
+        latestB = lastMessageB.timestamp;
+      } else {
+        latestB = chatB.createdAt;
+      }
+
+      // Newest chats come first
+      return latestB - latestA;
     });
-    return result;
+
+    // Step 3: Return the sorted list
+    return userChats;
   }
 
   getChatMembers(chatId) {
@@ -215,9 +247,9 @@ export class ChatManager {
     );
   }
 
-  formatTime(message) {
-    if (!message || !message.timestamp) return "";
-    const date = new Date(message.timestamp);
+  formatTime(timestamp) {
+    if (!timestamp) return "";
+    const date = new Date(timestamp);
     return date.toLocaleTimeString([], {
       hour: "2-digit",
       minute: "2-digit",

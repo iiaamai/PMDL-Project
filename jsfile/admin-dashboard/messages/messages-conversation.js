@@ -1,6 +1,11 @@
 import { message } from "../../objects/message/objects.js";
 import { chatManager } from "../../objects/message/data copy.js";
-export function renderMessagesConversation(loggedInUser, chatId = null) {
+
+export function renderMessagesConversation(
+  loggedInUser,
+  chatId = null,
+  renderMessagesList
+) {
   console.log("conversation - Logged User: ", loggedInUser.firstName);
   const chat = chatId ? chatManager.getChat(chatId) : null;
 
@@ -76,6 +81,7 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
     chatManager.createMessage(chat.id, loggedInUser.id, messageText);
     chatManager.save();
 
+    renderMessagesList(loggedInUser, renderMessagesConversation);
     renderMessagesConversation(loggedInUser, chat.id);
     messageInput.value = "";
     initScrollListener();
@@ -115,7 +121,7 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
     }
     messages.forEach((message) => {
       const text = message.message;
-      const timeStamp = chatManager.formatTime(message);
+      const timeStamp = chatManager.formatTime(message.timestamp);
       const isRead = message.isRead ? "&#10003&#10003" : "&#10003";
       if (message.senderId === loggedInUser.id) {
         html += `
