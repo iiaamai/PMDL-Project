@@ -163,10 +163,13 @@ export class ChatManager {
   getChats(userId) {
     const result = [];
     this.chatMembersList.forEach((member) => {
+      console.log(member.userId);
       if (member.userId === userId) {
+        console.log(member.firstName);
         const chat = this.getChat(member.chatId);
         if (chat) result.push(chat);
       }
+      console.log("aklhsd");
     });
     return result;
   }

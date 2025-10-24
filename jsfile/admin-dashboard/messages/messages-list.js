@@ -1,22 +1,19 @@
-import {
-  getChats,
-  getChatMessages,
-  getLatestMessage,
-  formatTime,
-  setChatName,
-  chats,
-  chatMembersList,
-  isChatExist,
-} from "../../objects/message/data.js";
 import { users } from "../../objects/users.js";
 import { chat, chatMembers } from "../../objects/message/objects.js";
+import { chatManager } from "../../objects/message/data copy.js";
 
 export function renderMessagesList(loggedInUser, renderConversation) {
+  console.log(chatManager.chats);
   const messagesListContainer = document.querySelector(".messages-list-js");
 
   messagesListContainer.innerHTML = "";
-  console.log("chat list - Logged User: ", loggedInUser.firstName);
-  const userChats = getChats(loggedInUser.id);
+  console.log(
+    "chat list - Logged User: ",
+    loggedInUser.firstName,
+    loggedInUser.id
+  );
+  const userChats = chatManager.getChats(loggedInUser.id);
+  console.log(userChats);
 
   if (userChats.length === 0) {
     messagesListContainer.innerHTML += `
@@ -107,13 +104,13 @@ export function renderMessagesList(loggedInUser, renderConversation) {
   function renderChatList() {
     let html = "";
     userChats.forEach((chat) => {
-      const messages = getChatMessages(chat.id);
+      const messages = chatManager.getChatMessages(chat.id);
       let timestamp = "";
       let latestMessage = "New Chat.";
 
       if (messages && messages.length > 0) {
-        const latestMsg = getLatestMessage(messages);
-        timestamp = formatTime(latestMsg);
+        const latestMsg = chatManager.getLatestMessage(messages);
+        timestamp = chatManager.formatTime(latestMsg);
         if (loggedInUser.id === latestMsg.senderId) {
           latestMessage = "You: " + latestMsg.message;
         } else {
@@ -125,7 +122,10 @@ export function renderMessagesList(loggedInUser, renderConversation) {
           <img src="images/icons/sample-profile.jpg" alt="" />
           <div class="details">
             <div>
-              <h4 class="name">${setChatName(loggedInUser, chat)}</h4>
+              <h4 class="name">${chatManager.setChatName(
+                loggedInUser,
+                chat
+              )}</h4>
               <span class="time">
               ${timestamp}
               </span>
@@ -145,32 +145,18 @@ export function renderMessagesList(loggedInUser, renderConversation) {
     profiles.forEach((profile) => {
       profile.addEventListener("click", (e) => {
         const userId = Number(profile.dataset.userId);
-        if (isChatExist(loggedInUser.id, userId)) {
+        if (chatManager.isChatExist(loggedInUser.id, userId)) {
           searchResult.classList.remove("search-result-popup");
           searchInput.value = "";
           console.log("chat exist");
           return;
         }
-        const newChat = new chat(
-          chats.length + 1,
-          "",
-          loggedInUser.id,
-          Date.now()
-        );
-        const newChatMembers1 = new chatMembers(
-          chatMembersList.length + 1,
-          newChat.id,
-          userId
-        );
-        const newChatMembers2 = new chatMembers(
-          chatMembersList.length + 2,
-          newChat.id,
-          loggedInUser.id
-        );
-        chats.push(newChat);
-        chatMembersList.push(newChatMembers1);
-        chatMembersList.push(newChatMembers2);
+        const newChat = chatManager.createChat(loggedInUser.id);
+        chatManager.createChatMembers(newChat.id, userId);
+        chatManager.createChatMembers(newChat.id, loggedInUser.id);
         searchResult.classList.remove("search-result-popup");
+        chatManager.save();
+        searchInput.value = "";
         renderMessagesList(loggedInUser, renderConversation);
       });
     });

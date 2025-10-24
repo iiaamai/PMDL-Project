@@ -47,21 +47,15 @@ export class chat {
 }
 
 export class chatMembers {
-  #id;
   #chatId;
   #userId;
 
   constructor(id, chatId, userId) {
-    this.#id = id;
     this.#chatId = chatId;
     this.#userId = userId;
   }
 
   // Getters
-  get id() {
-    return this.#id;
-  }
-
   get chatId() {
     return this.#chatId;
   }
@@ -71,9 +65,6 @@ export class chatMembers {
   }
 
   // Setters
-  set id(value) {
-    this.#id = value;
-  }
 
   set chatId(value) {
     this.#chatId = value;
@@ -83,7 +74,6 @@ export class chatMembers {
     this.#userId = value;
   }
 }
-
 export class message {
   #id;
   #chatId;

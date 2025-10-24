@@ -1,16 +1,8 @@
-import {
-  chatMessages,
-  getChat,
-  getConversationWith,
-  setChatName,
-  getChatMessages,
-  formatTime,
-} from "../../objects/message/data.js";
 import { message } from "../../objects/message/objects.js";
-
+import { chatManager } from "../../objects/message/data copy.js";
 export function renderMessagesConversation(loggedInUser, chatId = null) {
   console.log("conversation - Logged User: ", loggedInUser.firstName);
-  const chat = chatId ? getChat(chatId) : null;
+  const chat = chatId ? chatManager.getChat(chatId) : null;
 
   const chatContainer = document.querySelector(".messages-conversation-js");
 
@@ -28,8 +20,8 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
     `;
     return;
   }
-  const user = getConversationWith(chat, loggedInUser);
-  const messages = getChatMessages(chat.id);
+  const user = chatManager.getConversationWith(chat, loggedInUser);
+  const messages = chatManager.getChatMessages(chat.id);
 
   initScrollListener();
 
@@ -80,15 +72,10 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
     const messageText = messageInput.value.trim();
     if (messageText === "") return;
     console.log(messageText);
-    const newMessage = new message(
-      chatMessages.length + 1,
-      chat.id,
-      loggedInUser.id,
-      messageText,
-      Date.now(),
-      false
-    );
-    chatMessages.push(newMessage);
+
+    chatManager.createMessage(chat.id, loggedInUser.id, messageText);
+    chatManager.save();
+
     renderMessagesConversation(loggedInUser, chat.id);
     messageInput.value = "";
     initScrollListener();
@@ -102,7 +89,8 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
       <div class="conversation-name">
         <img src="images/icons/sample-profile.jpg" alt="" class="chat-profile">
         <div class="chat-details">
-          <h3 class="chat-name">${setChatName(loggedInUser, chat)}</h3>
+          <h3 class="chat-name">
+          ${chatManager.setChatName(loggedInUser, chat)}</h3>
           <p class="chat-status">
           ${user.isOnline ? "🟢 Online" : "🔘 Offline"}
           </p>
@@ -127,7 +115,7 @@ export function renderMessagesConversation(loggedInUser, chatId = null) {
     }
     messages.forEach((message) => {
       const text = message.message;
-      const timeStamp = formatTime(message);
+      const timeStamp = chatManager.formatTime(message);
       const isRead = message.isRead ? "&#10003&#10003" : "&#10003";
       if (message.senderId === loggedInUser.id) {
         html += `
