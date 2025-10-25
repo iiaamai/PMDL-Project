@@ -231,11 +231,13 @@ export class ChatManager {
   }
 
   isChatExist(userA, userB) {
-    return this.chats.some((chat) => {
-      const members = this.getChatMembers(chat.id);
-      const memberIds = members.map((m) => m.userId);
-      return memberIds.includes(userA) && memberIds.includes(userB);
-    });
+    return (
+      this.chats.find((chat) => {
+        const members = this.getChatMembers(chat.id);
+        const memberIds = members.map((m) => m.userId);
+        return memberIds.includes(userA) && memberIds.includes(userB);
+      }) || null
+    );
   }
 
   // ======= Helpers =======

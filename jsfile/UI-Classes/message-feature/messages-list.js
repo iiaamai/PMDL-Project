@@ -133,10 +133,16 @@ export class MessagesList {
       profiles.forEach((profile) => {
         profile.addEventListener("click", (e) => {
           const userId = Number(profile.dataset.userId);
-          if (chatManager.isChatExist(loggedInUser.id, userId)) {
+          const isChatExist = chatManager.isChatExist(loggedInUser.id, userId);
+          if (isChatExist) {
             searchResult.classList.remove("search-result-popup");
             searchInput.value = "";
             console.log("chat exist");
+            renderConversation(
+              loggedInUser,
+              isChatExist.id,
+              (user, renderList) => self.render(user, renderList)
+            );
             return;
           }
           const newChat = chatManager.createChat(loggedInUser.id);

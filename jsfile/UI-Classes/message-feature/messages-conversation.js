@@ -3,6 +3,7 @@ import { chatManager } from "../../objects/message/data copy.js";
 export class MessagesConversation {
   render(loggedInUser, chatId = null, renderList) {
     const self = this;
+    if (renderList) this.renderList = renderList;
     console.log("conversation - Logged User: ", loggedInUser.firstName);
     const chat = chatId ? chatManager.getChat(chatId) : null;
 
@@ -24,8 +25,6 @@ export class MessagesConversation {
     }
     const user = chatManager.getConversationWith(chat, loggedInUser);
     const messages = chatManager.getChatMessages(chat.id);
-
-    initScrollListener();
 
     function initScrollListener() {
       if (document.readyState === "loading") {
@@ -59,13 +58,15 @@ export class MessagesConversation {
         ${renderConversationFooter()}
       </div>
       `;
-
+    document.querySelector(".message-type").focus();
     const conversationMessages = document.querySelector(
       ".conversation-messages"
     );
     if (messages.length === 0 && conversationMessages) {
       conversationMessages.classList.add("conversation-messages-new");
     }
+    initScrollListener();
+
     document
       .querySelector(".send-message-js")
       .addEventListener("click", sendMessage);
@@ -81,9 +82,11 @@ export class MessagesConversation {
 
       chatManager.createMessage(chat.id, loggedInUser.id, messageText);
       chatManager.save();
-
-      if (typeof renderList === "function") {
-        renderList(loggedInUser, (user, chatId) => self.render(user, chatId));
+      console.log(typeof self.renderList === "function");
+      if (typeof self.renderList === "function") {
+        self.renderList(loggedInUser, (user, chatId) =>
+          self.render(user, chatId)
+        );
       }
       self.render(loggedInUser, chat.id);
       messageInput.value = "";
