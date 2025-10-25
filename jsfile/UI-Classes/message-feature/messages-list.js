@@ -146,6 +146,9 @@ export class MessagesList {
           chatManager.save();
           searchInput.value = "";
           self.render(loggedInUser, renderConversation);
+          renderConversation(loggedInUser, newChat.id, (user, renderList) =>
+            self.render(user, renderList)
+          );
         });
       });
     }

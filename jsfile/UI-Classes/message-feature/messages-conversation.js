@@ -1,7 +1,7 @@
 import { chatManager } from "../../objects/message/data copy.js";
 
 export class MessagesConversation {
-  render(loggedInUser, chatId = null, renderMessagesList) {
+  render(loggedInUser, chatId = null, renderList) {
     const self = this;
     console.log("conversation - Logged User: ", loggedInUser.firstName);
     const chat = chatId ? chatManager.getChat(chatId) : null;
@@ -82,9 +82,9 @@ export class MessagesConversation {
       chatManager.createMessage(chat.id, loggedInUser.id, messageText);
       chatManager.save();
 
-      renderMessagesList(loggedInUser, (user, chatId) =>
-        self.render(user, chatId)
-      );
+      if (typeof renderList === "function") {
+        renderList(loggedInUser, (user, chatId) => self.render(user, chatId));
+      }
       self.render(loggedInUser, chat.id);
       messageInput.value = "";
       initScrollListener();
