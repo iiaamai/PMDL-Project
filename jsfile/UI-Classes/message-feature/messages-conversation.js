@@ -3,6 +3,7 @@ import { chatManager } from "../../objects/message/data copy.js";
 export class MessagesConversation {
   render(loggedInUser, chatId = null, renderList) {
     const self = this;
+    if (renderList) this.renderList = renderList;
     console.log("conversation - Logged User: ", loggedInUser.firstName);
     const chat = chatId ? chatManager.getChat(chatId) : null;
 
@@ -59,6 +60,7 @@ export class MessagesConversation {
         ${renderConversationFooter()}
       </div>
       `;
+    document.querySelector(".message-type").focus();
 
     const conversationMessages = document.querySelector(
       ".conversation-messages"
@@ -81,9 +83,11 @@ export class MessagesConversation {
 
       chatManager.createMessage(chat.id, loggedInUser.id, messageText);
       chatManager.save();
-
-      if (typeof renderList === "function") {
-        renderList(loggedInUser, (user, chatId) => self.render(user, chatId));
+      console.log(typeof renderList);
+      if (typeof self.renderList === "function") {
+        self.renderList(loggedInUser, (user, chatId) =>
+          self.render(user, chatId)
+        );
       }
       self.render(loggedInUser, chat.id);
       messageInput.value = "";

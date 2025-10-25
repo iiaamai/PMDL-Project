@@ -5,6 +5,7 @@ export class MessagesList {
   constructor() {}
   render(loggedInUser, renderConversation) {
     const self = this;
+    if (renderConversation) this.renderConversation = renderConversation;
     const messagesListContainer = document.querySelector(".messages-list-js");
 
     messagesListContainer.innerHTML = "";
@@ -133,22 +134,31 @@ export class MessagesList {
       profiles.forEach((profile) => {
         profile.addEventListener("click", (e) => {
           const userId = Number(profile.dataset.userId);
-          if (chatManager.isChatExist(loggedInUser.id, userId)) {
+          const isChatExist = chatManager.isChatExist(loggedInUser.id, userId);
+          if (isChatExist) {
             searchResult.classList.remove("search-result-popup");
             searchInput.value = "";
+            this.renderConversation(
+              loggedInUser,
+              isChatExist.id,
+              (user, renderList) => {
+                self.render(user, renderList);
+              }
+            );
             console.log("chat exist");
             return;
+          } else {
+            const newChat = chatManager.createChat(loggedInUser.id);
+            chatManager.createChatMembers(newChat.id, userId);
+            chatManager.createChatMembers(newChat.id, loggedInUser.id);
+            searchResult.classList.remove("search-result-popup");
+            chatManager.save();
+            searchInput.value = "";
+            self.render(loggedInUser, renderConversation);
+            renderConversation(loggedInUser, newChat.id, (user, renderList) => {
+              self.render(user, renderList);
+            });
           }
-          const newChat = chatManager.createChat(loggedInUser.id);
-          chatManager.createChatMembers(newChat.id, userId);
-          chatManager.createChatMembers(newChat.id, loggedInUser.id);
-          searchResult.classList.remove("search-result-popup");
-          chatManager.save();
-          searchInput.value = "";
-          self.render(loggedInUser, renderConversation);
-          renderConversation(loggedInUser, newChat.id, (user, renderList) =>
-            self.render(user, renderList)
-          );
         });
       });
     }
