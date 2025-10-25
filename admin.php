@@ -172,7 +172,7 @@ $userEmail = $_SESSION['admin_email'];
               
             </div>
           </div>
-          <script type = "module" src = "jsfile/admin-dashboard/messages.js"></script>
+          <script type = "module" src = "jsfile/UI-Classes/message-feature/messages.js"></script>
         </section>
 
         <section id="jobs" class="page">

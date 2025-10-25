@@ -10,18 +10,7 @@ export function renderMessagesList(loggedInUser, renderConversation) {
 
   if (userChats.length === 0) {
     messagesListContainer.innerHTML += `
-      <div class="list-header">
-        <h3>Messages</h3>
-        <div class="search">
-          <span>
-            <img src="images/icons/search-icon.svg" alt="Search"/>
-          </span>
-          <input type="text" placeholder="Search..." />
-          <div class="search-result">
-            
-          </div>
-        </div>
-      </div>
+    ${renderChatListHeader()}
       <div class="list empty-list">
         <div class = "chat-icon-error">
           <img src="images/icons/no-chat-list.svg" alt="">
@@ -32,18 +21,7 @@ export function renderMessagesList(loggedInUser, renderConversation) {
     return;
   }
   messagesListContainer.innerHTML += `
-    <div class="list-header">
-      <h3>Messages</h3>
-      <div class="search">
-        <span>
-          <img src="images/icons/search-icon.svg" alt="Search"/>
-        </span>
-        <input type="text" placeholder="Search..." />
-        <div class="search-result">
-          
-        </div>
-      </div>
-    </div>
+    ${renderChatListHeader()}
     <div class="lists">
       ${renderChatList()}
     </div>
@@ -93,7 +71,18 @@ export function renderMessagesList(loggedInUser, renderConversation) {
     });
     return html;
   }
-
+  function renderChatListHeader() {
+    return `
+      <div class="list-header">
+        <h3>Messages</h3>
+        <div class="search">
+          <span><img src="images/icons/search-icon.svg" alt="Search"/></span>
+          <input type="text" placeholder="Search..." />
+          <div class="search-result"></div>
+        </div>
+      </div>
+    `;
+  }
   function renderChatList() {
     let html = "";
     userChats.forEach((chat) => {
