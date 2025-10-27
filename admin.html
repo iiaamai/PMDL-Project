@@ -26,6 +26,10 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-error.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-list-error.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-new.css" />
+    <!-- Settings Section CSS -->
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/account.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings.css" />
+    
   </head>
 
   <body>
@@ -299,8 +303,74 @@ $userEmail = $_SESSION['admin_email'];
         </section>
 
         <section id="settings" class="page">
-          <h2>Settings</h2>
-          <p>Manage settings here.</p>
+          <div class = "settings-container">
+            <div class = "settings-side-bar" style = "grid-area: side-bar">
+              <h1>Settings</h1>
+              <button class="side-bar-item side-bar-item-active" data-item-id="settings-account">Account</button>
+              <button class="side-bar-item" data-item-id="settings-security">Security</button>
+              <button class="side-bar-item" data-item-id="settings-notifications">Notifications</button>
+              <button class="side-bar-item" data-item-id="settings-system">System</button>
+              <button class="side-bar-item" data-item-id="settings-database">Database</button>
+              <button class="side-bar-item" data-item-id="settings-advance">Advance</button>
+            </div>
+
+            <div class = "settings-content-area" style = "grid-area: content-area">
+              <div  id = "settings-account" class = "content-active">
+                <div class = "content-header">
+                  <h2>Account Settings</h2>
+                </div>
+                <div class="content-body">
+                  <form class="account-form">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" />
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" />
+
+                    <label for="role">Role</label>
+                    <select id="role" name="role">
+                      <option value="">Select a role</option>
+                      <option value="admin">Administrator</option>
+                      <option value="manager">Manager</option>
+                      <option value="staff">Staff</option>
+                      <option value="intern">Intern</option>
+                    </select>
+
+                    <label for="department">Department</label>
+                    <select id="department" name="department">
+                      <option value="">Select a department</option>
+                      <option value="hr">Human Resources</option>
+                      <option value="it">IT</option>
+                      <option value="finance">Finance</option>
+                      <option value="marketing">Marketing</option>
+                      <option value="operations">Operations</option>
+                    </select>
+                  </form>
+
+                </div>
+
+                <div class="content-footer">
+                  <button class = "account-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                </div>
+              </div>
+              <div id = "settings-security" class = "content-active content-hide">
+                Security
+              </div>
+              <div id = "settings-notifications" class = "content-active content-hide">
+                Notifications
+              </div>
+              <div id = "settings-system" class = "content-active content-hide">
+                System
+              </div>
+              <div id = "settings-database" class = "content-active content-hide">
+                Database
+              </div>
+              <div id = "settings-advance" class = "content-active content-hide">
+                Advance
+              </div>
+            </div>
+          </div>
+          <script type = "module" src = "jsfile/admin-dashboard/settings.js"></script>
         </section>
       </main>
     </div>
