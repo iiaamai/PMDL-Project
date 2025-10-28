@@ -1,3 +1,4 @@
+import { securitySettingsInit } from "./settings/security.js";
 const sideBarButtons = document.querySelectorAll(".side-bar-item");
 sideBarButtons.forEach((item) => {
   item.addEventListener("click", () => {
@@ -15,3 +16,5 @@ sideBarButtons.forEach((item) => {
     content.classList.remove("content-hide");
   });
 });
+
+securitySettingsInit();

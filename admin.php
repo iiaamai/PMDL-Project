@@ -27,8 +27,10 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-list-error.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/messages/messages-conversation-new.css" />
     <!-- Settings Section CSS -->
-    <link rel="stylesheet" href="styles/admin-dashboard/settings/account.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/content-areas.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/account.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/security.css" />
     
   </head>
 
@@ -306,8 +308,8 @@ $userEmail = $_SESSION['admin_email'];
           <div class = "settings-container">
             <div class = "settings-side-bar" style = "grid-area: side-bar">
               <h1>Settings</h1>
-              <button class="side-bar-item side-bar-item-active" data-item-id="settings-account">Account</button>
-              <button class="side-bar-item" data-item-id="settings-security">Security</button>
+              <button class="side-bar-item" data-item-id="settings-account">Account</button>
+              <button class="side-bar-item side-bar-item-active" data-item-id="settings-security">Security</button>
               <button class="side-bar-item" data-item-id="settings-notifications">Notifications</button>
               <button class="side-bar-item" data-item-id="settings-system">System</button>
               <button class="side-bar-item" data-item-id="settings-database">Database</button>
@@ -315,7 +317,7 @@ $userEmail = $_SESSION['admin_email'];
             </div>
 
             <div class = "settings-content-area" style = "grid-area: content-area">
-              <div  id = "settings-account" class = "content-active">
+              <div  id = "settings-account" class = "content-active  content-hide">
                 <div class = "content-header">
                   <h2>Account Settings</h2>
                 </div>
@@ -353,8 +355,43 @@ $userEmail = $_SESSION['admin_email'];
                   <button class = "account-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-security" class = "content-active content-hide">
-                Security
+              <div id = "settings-security" class = "content-active">
+                <div class = "content-header">
+                  <h2>Security Settings</h2>
+                </div>
+                <div class="content-body">
+                  <form class="security-form">
+                    <label for="currentPassword">Current Password</label>
+                    <div class= "security-input-container">
+                      <input type="password" id="currentPassword" name="currentPassword" />
+                      <img src="images/icons/visible-off-icon.png" class="security-toggle-password" id="toggleConfirmPassword">
+                    </div>
+
+                    <label for="newPassword">New Password</label>
+                    <div class= "security-input-container">
+                      <input type="password" id="newPassword" name="newPassword" />
+                      <img src="images/icons/visible-off-icon.png" class="security-toggle-password" id="toggleConfirmPassword">
+                    </div>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class= "security-input-container">
+                      <input type="password" id="confirmPassword" name="confirmPassword" />
+                      <img src="images/icons/visible-off-icon.png" class="security-toggle-password" id="toggleConfirmPassword">
+                    </div>
+                  </form>
+                  <div class = "two-fa-section">
+                    <h2>Two-Factor Authentication</h2>
+                    <div>
+                      <input type="checkbox" name ="2FA" id = "toggleTwoFA">
+                      <Label>Enable two-factor authentication</Label>
+                    </div>
+                    <p>Adds an extra layer of security to your account by requiring more than just password to sign in.</p>
+                  </div>
+                </div>
+
+                <div class="content-footer">
+                  <button class = "security-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                </div>
               </div>
               <div id = "settings-notifications" class = "content-active content-hide">
                 Notifications

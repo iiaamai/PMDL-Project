@@ -1,0 +1,20 @@
+.content-active {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.content-header {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+}
+
+.content-body {
+  border-top: lightgray 1px solid;
+  border-bottom: lightgray 1px solid;
+  flex-grow: 1;
+}
+
+.content-footer {
+  height: 5rem;
+}
