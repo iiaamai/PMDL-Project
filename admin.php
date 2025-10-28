@@ -31,6 +31,7 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/settings/content-areas.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/account.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/security.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/notifications.css" />
     
   </head>
 
@@ -309,8 +310,8 @@ $userEmail = $_SESSION['admin_email'];
             <div class = "settings-side-bar" style = "grid-area: side-bar">
               <h1>Settings</h1>
               <button class="side-bar-item" data-item-id="settings-account">Account</button>
-              <button class="side-bar-item side-bar-item-active" data-item-id="settings-security">Security</button>
-              <button class="side-bar-item" data-item-id="settings-notifications">Notifications</button>
+              <button class="side-bar-item" data-item-id="settings-security">Security</button>
+              <button class="side-bar-item side-bar-item-active" data-item-id="settings-notifications">Notifications</button>
               <button class="side-bar-item" data-item-id="settings-system">System</button>
               <button class="side-bar-item" data-item-id="settings-database">Database</button>
               <button class="side-bar-item" data-item-id="settings-advance">Advance</button>
@@ -319,7 +320,7 @@ $userEmail = $_SESSION['admin_email'];
             <div class = "settings-content-area" style = "grid-area: content-area">
               <div  id = "settings-account" class = "content-active  content-hide">
                 <div class = "content-header">
-                  <h2>Account Settings</h2>
+                  <h1>Account Settings</h1>
                 </div>
                 <div class="content-body">
                   <form class="account-form">
@@ -355,9 +356,9 @@ $userEmail = $_SESSION['admin_email'];
                   <button class = "account-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-security" class = "content-active">
+              <div id = "settings-security" class = "content-active content-hide">
                 <div class = "content-header">
-                  <h2>Security Settings</h2>
+                  <h1>Security Settings</h1>
                 </div>
                 <div class="content-body">
                   <form class="security-form">
@@ -393,8 +394,70 @@ $userEmail = $_SESSION['admin_email'];
                   <button class = "security-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-notifications" class = "content-active content-hide">
-                Notifications
+              <div id = "settings-notifications" class = "content-active">
+                <div class = "content-header">
+                  <h1>Notification Settings</h1>
+                </div>
+                <div class="content-body">
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>Email Notifications</h3>
+                      <p>Receive email notifications for important updates</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="email-notification" id = "toggle-email-notification" checked>
+                    </div>
+                  </div>
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>Browser Notifications</h3>
+                      <p>Show browser notifications for system alerts</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="browser-notification" id = "toggle-browser-notification" checked>
+                    </div>
+                  </div>
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>Acount Updates</h3>
+                      <p>Get notified when OFWs update their account information</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="account-update-notification" id = "toggle-account-update-notification" checked>
+                    </div>
+                  </div>
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>Document Submissions</h3>
+                      <p>Get notified when new documents are submitted</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="document-submissions-notification" id = "document-submissions-notification" checked>
+                    </div>
+                  </div>
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>New Messages</h3>
+                      <p>Get notified when new documents are submitted</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="new-message-notifications" id = "toggle-new-message-notifications" checked>
+                    </div>
+                  </div>
+                  <div class = "notifications-items">
+                    <div class = "notification-item-label">
+                      <h3>System Maintenance</h3>
+                      <p>Get notified scheduled system maintenance</p>
+                    </div>
+                    <div class = "notification-item-toggle">
+                      <input type="checkbox" name ="system-maintenance-notifications" id = "toggle-system-maintenance-notifications" checked>
+                    </div>
+                  </div>  
+                </div>
+
+                <div class="content-footer">
+                  <button class = "notification-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                </div>
               </div>
               <div id = "settings-system" class = "content-active content-hide">
                 System

@@ -12,7 +12,7 @@
 .content-body {
   border-top: lightgray 1px solid;
   border-bottom: lightgray 1px solid;
-  flex-grow: 1;
+  flex: 1;
 }
 
 .content-footer {
