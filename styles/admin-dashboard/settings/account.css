@@ -11,26 +11,3 @@ select {
   border: 1px solid lightgray;
   border-radius: 0.3em;
 }
-/* Footer */
-.account-save-changes {
-  font-weight: bold;
-  height: 3rem;
-  display: flex;
-  border: none;
-  background-color: #b91c1c;
-  color: white;
-  align-items: center;
-  border-radius: 0.5em;
-  padding: 0.5em;
-  transition: transform 0.1s ease-in-out;
-}
-.account-save-changes:hover {
-  background-color: #f36d6d;
-}
-.account-save-changes:active {
-  transform: translateY(2px);
-}
-.account-save-changes img {
-  object-fit: contain;
-  height: 100%;
-}

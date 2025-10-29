@@ -17,9 +17,9 @@ export function securitySettingsInit() {
   }
 
   document
-    .querySelector(".security-save-changes")
+    .getElementById("security-save-changes")
     .addEventListener("click", saveChnages);
-
+  toggleVisibilityPassword();
   isEnableTwoFA();
   function saveChnages() {
     const currentPass = document.getElementById("currentPassword");

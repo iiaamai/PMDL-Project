@@ -32,6 +32,7 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/settings/account.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/security.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/notifications.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/system.css" />
     
   </head>
 
@@ -311,8 +312,8 @@ $userEmail = $_SESSION['admin_email'];
               <h1>Settings</h1>
               <button class="side-bar-item" data-item-id="settings-account">Account</button>
               <button class="side-bar-item" data-item-id="settings-security">Security</button>
-              <button class="side-bar-item side-bar-item-active" data-item-id="settings-notifications">Notifications</button>
-              <button class="side-bar-item" data-item-id="settings-system">System</button>
+              <button class="side-bar-item" data-item-id="settings-notifications">Notifications</button>
+              <button class="side-bar-item  side-bar-item-active" data-item-id="settings-system">System</button>
               <button class="side-bar-item" data-item-id="settings-database">Database</button>
               <button class="side-bar-item" data-item-id="settings-advance">Advance</button>
             </div>
@@ -353,7 +354,7 @@ $userEmail = $_SESSION['admin_email'];
                 </div>
 
                 <div class="content-footer">
-                  <button class = "account-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                  <button id = "account-save-changes"class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
               <div id = "settings-security" class = "content-active content-hide">
@@ -391,10 +392,10 @@ $userEmail = $_SESSION['admin_email'];
                 </div>
 
                 <div class="content-footer">
-                  <button class = "security-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                  <button id = "security-save-changes"class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-notifications" class = "content-active">
+              <div id = "settings-notifications" class = "content-active content-hide">
                 <div class = "content-header">
                   <h1>Notification Settings</h1>
                 </div>
@@ -456,11 +457,108 @@ $userEmail = $_SESSION['admin_email'];
                 </div>
 
                 <div class="content-footer">
-                  <button class = "notification-save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                  <button id = "notification-save-changes"class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-system" class = "content-active content-hide">
-                System
+              <div id = "settings-system" class = "content-active">
+                <div class = "content-header">
+                  <h1>System Settings</h1>
+                </div>
+
+                <div class="content-body">
+                  <div class = "system-information">
+                    <h2>System Information</h2>
+                    <div class="system-information-content">
+                      <div style = "grid-area: system-information-1">
+                        <p class = "system-information-label">
+                          System Version
+                        </p>
+                        <p>
+                          PMDL v2.4.0
+                        </p>
+                      </div>
+                      <div style = "grid-area: system-information-2">
+                        <p class = "system-information-label">
+                          Last Update
+                        </p>
+                        <p>December 10, 2023</p>
+                      </div>
+                      <div style = "grid-area: system-information-3">
+                        <p class = "system-information-label">
+                          Server Status
+                        </p>
+                        <p class = "system-information-status">
+                          Online
+                        </p>
+                      </div>
+                      
+                      <div style = "grid-area: system-information-4">
+                        <p class = "system-information-label">
+                          Database status
+                        </p>
+                        <p class = "system-information-status">
+                         Connected
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class = "system-maintenance">
+                    <h2>System Maintenance</h2>
+                    <div class="system-maintenance-content">
+                      <button class="system-maintenance-item">
+                        <img src="./images/icons/updates-icon.png">
+                        Check for Updates
+                      </button>
+                      <button class="system-maintenance-item">
+                        <img src="./images/icons/databse-icon.png">
+                        Optimize Database
+                      </button>
+                      <button class="system-maintenance-item">
+                        <img src="./images/icons/security-icon.png">
+                        Security Scan
+                      </button>
+                    </div>
+                  </div>
+                  <div class = "system-maintenance">
+                    <h2>System Performance</h2>
+                    <div class="system-performance-content">
+                      <div class="system-performance-item">
+                        <div class="label">
+                          <label>CPU Usage</label>
+                          <p class="usage">32%</p>
+                        </div>
+                        <div class="percentage-bar">
+                          <div class="fill" style="width: 32%;
+                          background-color: #16a34a;"></div>
+                        </div>
+                      </div>
+                      <div class="system-performance-item">
+                        <div class="label">
+                          <label>Memory Usage</label>
+                          <p class="usage">68%</p>
+                        </div>
+                        <div class="percentage-bar">
+                          <div class="fill" style="width: 68%;
+                          background-color: #eab308;"></div>
+                        </div>
+                      </div>
+                      <div class="system-performance-item">
+                        <div class="label">
+                          <label>Disk Usage</label>
+                          <p class="usage">45%</p>
+                        </div>
+                        <div class="percentage-bar">
+                          <div class="fill" style="width: 45%;
+                          background-color: #3b82f6;"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="content-footer">
+                  <button id = "system-save-changes" class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
+                </div>
               </div>
               <div id = "settings-database" class = "content-active content-hide">
                 Database
