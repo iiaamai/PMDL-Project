@@ -13,6 +13,7 @@
   border-top: lightgray 1px solid;
   border-bottom: lightgray 1px solid;
   flex: 1;
+  overflow: hidden;
 }
 
 .content-footer {

@@ -33,6 +33,8 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/settings/security.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/notifications.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/settings/system.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/access-required.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/settings/advance.css" />
     
   </head>
 
@@ -313,8 +315,8 @@ $userEmail = $_SESSION['admin_email'];
               <button class="side-bar-item" data-item-id="settings-account">Account</button>
               <button class="side-bar-item" data-item-id="settings-security">Security</button>
               <button class="side-bar-item" data-item-id="settings-notifications">Notifications</button>
-              <button class="side-bar-item  side-bar-item-active" data-item-id="settings-system">System</button>
-              <button class="side-bar-item" data-item-id="settings-database">Database</button>
+              <button class="side-bar-item" data-item-id="settings-system">System</button>
+              <button class="side-bar-item   side-bar-item-active" data-item-id="settings-database">Database</button>
               <button class="side-bar-item" data-item-id="settings-advance">Advance</button>
             </div>
 
@@ -460,7 +462,7 @@ $userEmail = $_SESSION['admin_email'];
                   <button id = "notification-save-changes"class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-system" class = "content-active">
+              <div id = "settings-system" class = "content-active content-hide">
                 <div class = "content-header">
                   <h1>System Settings</h1>
                 </div>
@@ -560,11 +562,38 @@ $userEmail = $_SESSION['admin_email'];
                   <button id = "system-save-changes" class = "save-changes"><img src="images/icons/save-changes-icon.svg" alt="">Save Changes</button>
                 </div>
               </div>
-              <div id = "settings-database" class = "content-active content-hide">
-                Database
+              <div id = "settings-database" class = "content-active">
+                <div class="settings-access-required">
+                  <div>
+                    <img src="./images/icons/security-alert-icon.png" alt="">
+                    <h4>Administrator Access Required</h4>
+                    <p>These setting is required elevated permissions.</p>
+                    <button>
+                      <img src="./images/icons/security-lock-icon.png" alt="">
+                      Authenticate
+                    </button>
+                  </div>
+                </div>
               </div>
               <div id = "settings-advance" class = "content-active content-hide">
-                Advance
+                <div class="settings-advance-content">
+                  <div class="settings-advance-items">
+                    <img src="images/icons/docs-icon.png" alt="">
+                    <div>
+                      <h4>Document Status Changed</h4>
+                      <time>Dec 13, 04:10pm</time>  
+                      <p>Lois A. Mabalot visa application has been approved</p>
+                    </div>
+                  </div>
+                  <div class="settings-advance-items">
+                    <img src="images/icons/job-order-icon.png" alt="">
+                    <div>
+                      <h4>New Job Order Posted</h4>
+                      <time>Dec 12, 02:30pm</time>  
+                      <p>Lois A. Mabalot added a new job order for Registered Nurses in Saudi</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
