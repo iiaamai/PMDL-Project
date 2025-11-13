@@ -103,6 +103,9 @@ h3 {
   border-radius: 50%;
   object-fit: contain;
 }
+.profile h4 {
+  font-size: 1rem;
+}
 /*Chat Lists*/
 .lists {
   width: 100%;
