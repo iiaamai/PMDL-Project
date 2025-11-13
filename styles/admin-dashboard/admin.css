@@ -2,14 +2,15 @@
 
 /*Pie Chart*/
 
-*{
+* {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
   box-sizing: border-box;
 }
 
-button:focus input:focus, textarea:focus {
+button:focus input:focus,
+textarea:focus {
   outline: 0;
 }
 
@@ -21,7 +22,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
- padding: 80px 0;
+  padding: 80px 0;
   text-align: center;
 }
 
@@ -125,9 +126,11 @@ body {
   border-bottom: 1px solid #eee;
   background: #fff;
 }
+
 .user1 {
-  margin-left: 600px;
+  margin-left: 850px;
 }
+
 .content {
   font-family: "Poppins", sans-serif;
   padding: 20px 20px;
@@ -164,7 +167,7 @@ body {
 /* ADMIN HOMEPAGE */
 .filter01 {
   width: 150px;
-  padding: 8px 20px;
+  padding: 12px 20px;
   border-radius: 4px;
 }
 
@@ -176,9 +179,20 @@ body {
   border: none;
 }
 
+.home_title {
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+
+.info1 h4 {
+  font-weight: bold;
+  font-size: 16px;
+}
+
 .info1 {
-  width: 1043px;
-  height: 90px;
+  width: 1005px;
+  height: 70px;
   padding: 2px 0px;
   justify-content: center;
   text-align: left;
@@ -206,38 +220,35 @@ h4 {
   background: #fff;
   padding: 20px;
   width: 1005px;
-  border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
-.search1 {
-  float: right;
-  margin-top: -35px;
+.filters {
+  margin-bottom: 20px;
 }
 
-.search1 input {
-  padding: 6px 10px;
+.filter-btn {
+  border-radius: 9px;
+  border: none;
+  padding: 10px;
+}
+
+.filter-btn:hover {
+  color: white;
+  background-color: #e02121;
+}
+
+.searchh1 {
+  float: right;
+  margin-top: 6px;
+}
+
+.searchh1 input {
   border: 1px solid #ddd;
   border-radius: 6px;
+  padding: 8px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-}
-
-table th,
-table td {
-  padding: 12px;
-  border-bottom: 1px solid #eee;
-  text-align: left;
-  font-size: 14px;
-}
-
-table th {
-  background: #fafafa;
-}
 
 .bm-tag {
   background: #e6f0ff;
@@ -248,17 +259,17 @@ table th {
   margin-left: 5px;
 }
 
-.status.complete {
+.td.complete {
   color: green;
   font-weight: bold;
 }
 
-.status.incomplete {
+.td.incomplete {
   color: orange;
   font-weight: bold;
 }
 
-.status.pending {
+.td.pending {
   color: #999;
   font-weight: bold;
 }
@@ -272,6 +283,7 @@ table th {
 .action a:hover {
   text-decoration: underline;
 }
+
 .charts-row {
   display: flex;
   justify-content: center;
@@ -280,22 +292,38 @@ table th {
   margin-bottom: 30px;
 }
 
-.charts-row > div {
+.charts-row>div {
   width: 400px;
   height: 300px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+/* -------------------------------------JOB ORDER---------------------------- */
+.search-job {
+  float: right;
+}
+
+.search-job input {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+
+
+
+
+
+
+
+
 /* ADAPT */
-@media only screen and (max-width: 767px) {
-}
+@media only screen and (max-width: 767px) {}
 
-@media only screen and (min-width: 1024px) and(max-width:1439px) {
-}
+@media only screen and (min-width: 1024px) and(max-width:1439px) {}
 
-@media only screen and (min-width: 1440px) {
-}
+@media only screen and (min-width: 1440px) {}
 
 html,
 body,
