@@ -9,6 +9,9 @@
   <link rel="stylesheet" href="styles/registerlog.css" />
   <link rel="stylesheet" href="styles/global/global.css" />
   <link rel="stylesheet" href="styles/global/footer.css" />
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 </head>
 
 <body>
@@ -32,7 +35,7 @@
       <a href="registerlog.php" class="btn2 login">Log In</a>
     </div>
   </header>
-  <!-- man -->
+
   <div class="container" id="register" style="display:none;">
     <h1 class="form-title">Register</h1>
     <form method="post" action="php/regilog.php">
@@ -89,17 +92,27 @@
       <button id="RegisterButton">Register</button>
     </div>
   </div>
-
+  <!-- forgot pass -->
   <div class="container" id="forgot-password">
     <h1 class="form-title">Reset the Password</h1>
-    <form method="post" action="php/regilog.php">
+    <form method="post" action="php/send-reset-password.php">
       <div class="input-group">
         <label for="emal">Email</label>
         <input type="email" name="email" id="email" placeholder="Email" required>
+
+        <button class="btn1">Send</button>
       </div>
+    </form>
   </div>
 
-  <script src="jsfile/regislog.js"></script>
+  <!-- ----------------------POP UP----------------------- -->
+  <div id="errorPopup" class="popup">
+    <div class="popup-content">
+      <h3>Invalid Credentials</h3>
+      <p>The email or password you entered is incorrect. Please try again.</p>
+      <button id="closeBtn">OK</button>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="footer-container">
@@ -155,6 +168,9 @@
       <h4>© 2025 PMDL Recruitment Agency. All rights reserved.</h4>
     </div>
   </footer>
+
+  <script src="jsfile/regislog.js"></script>
+
 </body>
 
 </html>

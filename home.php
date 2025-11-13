@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles/global/header.css" />
   <link rel="stylesheet" href="styles/global/footer.css" />
   <link rel="stylesheet" href="styles/global/global.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -264,7 +265,7 @@
     </div>
   </section>
 
-  <script src="jsfile/home.js"></script>
+  <script src="jsfile/home-expand.js"></script>
 
   <footer class="footer">
     <div class="footer-container">
