@@ -42,6 +42,24 @@ $userEmail = $_SESSION['email'];
       rel="stylesheet"
       href="styles/user-dashboard/messages/messages-conversation-new.css"
     />
+    <!-- Settings Section CSS -->
+    <link rel="stylesheet" href="styles/user-dashboard/settings.css" />
+    <link
+      rel="stylesheet"
+      href="styles/user-dashboard/settings/content-areas.css"
+    />
+    <link rel="stylesheet" href="styles/user-dashboard/settings/account.css" />
+    <link rel="stylesheet" href="styles/user-dashboard/settings/security.css" />
+    <link
+      rel="stylesheet"
+      href="styles/user-dashboard/settings/notifications.css"
+    />
+    <link rel="stylesheet" href="styles/user-dashboard/settings/system.css" />
+    <link
+      rel="stylesheet"
+      href="styles/user-dashboard/settings/access-required.css"
+    />
+    <link rel="stylesheet" href="styles/user-dashboard/settings/advance.css" />
     <!-- icon -->
     <link
       rel="stylesheet"
@@ -210,94 +228,261 @@ $userEmail = $_SESSION['email'];
         <!-- ------------------------------SETTINGS----------------------------------- -->
         <section id="settings" class="page" style="display: none">
           <div class="settings-container">
-            <div class="settings-select">
-              <h4>SETTINGS</h4>
-              <nav class="set-choices">
-                <ul>
-                  <li>
-                    <a href="#" onclick="showSettingsSection('account')"
-                      >Account Settings</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#" onclick="showSettingsSection('security')"
-                      >Security</a
-                    >
-                  </li>
-                  <li>
-                    <a href="#" onclick="showSettingsSection('display')"
-                      >Display</a
-                    >
-                  </li>
-                </ul>
-              </nav>
+            <div class="settings-side-bar" style="grid-area: side-bar">
+              <h1>Settings</h1>
+              <button class="side-bar-item" data-item-id="settings-account">
+                Account
+              </button>
+              <button class="side-bar-item" data-item-id="settings-security">
+                Security
+              </button>
+              <button
+                class="side-bar-item"
+                data-item-id="settings-notifications"
+              >
+                Notifications
+              </button>
+              <button class="side-bar-item" data-item-id="settings-system">
+                System
+              </button>
             </div>
 
-            <div class="settings-result">
-              <div class="result-container">
-                <!-- Account Section -->
-                <section class="settings-section active" id="account">
-                  <h2>Profile</h2>
-                  <div class="form-set">
-                    <div class="input-set">
-                      <label class="set-sub">Username</label>
-                      <input type="text" name="username" required />
+            <div class="settings-content-area" style="grid-area: content-area">
+              <div id="settings-account" class="content-active content-hide">
+                <div class="content-header">
+                  <h1>Account Settings</h1>
+                </div>
+                <div class="content-body">
+                  <form class="account-form">
+                    <label for="fullname">Full Name</label>
+                    <input type="text" id="fullname" name="fullname" />
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" />
+                  </form>
+                </div>
+
+                <div class="content-footer">
+                  <button id="account-save-changes" class="save-changes">
+                    <img src="images/icons/save-changes-icon.svg" alt="" />Save
+                    Changes
+                  </button>
+                </div>
+              </div>
+              <div id="settings-security" class="content-active content-hide">
+                <div class="content-header">
+                  <h1>Security Settings</h1>
+                </div>
+                <div class="content-body">
+                  <form class="security-form">
+                    <label for="currentPassword">Current Password</label>
+                    <div class="security-input-container">
+                      <input
+                        type="password"
+                        id="currentPassword"
+                        name="currentPassword"
+                      />
+                      <img
+                        src="images/icons/visible-off-icon.png"
+                        class="security-toggle-password"
+                        id="toggleConfirmPassword"
+                      />
                     </div>
 
-                    <div class="input-set">
-                      <label class="set-sub">Email</label>
-                      <input type="email" name="email" required />
+                    <label for="newPassword">New Password</label>
+                    <div class="security-input-container">
+                      <input
+                        type="password"
+                        id="newPassword"
+                        name="newPassword"
+                      />
+                      <img
+                        src="images/icons/visible-off-icon.png"
+                        class="security-toggle-password"
+                        id="toggleConfirmPassword"
+                      />
+                    </div>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="security-input-container">
+                      <input
+                        type="password"
+                        id="confirmPassword"
+                        name="confirmPassword"
+                      />
+                      <img
+                        src="images/icons/visible-off-icon.png"
+                        class="security-toggle-password"
+                        id="toggleConfirmPassword"
+                      />
+                    </div>
+                  </form>
+                  <div class="two-fa-section">
+                    <h2>Two-Factor Authentication</h2>
+                    <div>
+                      <input type="checkbox" name="2FA" id="toggleTwoFA" />
+                      <label>Enable two-factor authentication</label>
+                    </div>
+                    <p>
+                      Adds an extra layer of security to your account by
+                      requiring more than just password to sign in.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="content-footer">
+                  <button id="security-save-changes" class="save-changes">
+                    <img src="images/icons/save-changes-icon.svg" alt="" />Save
+                    Changes
+                  </button>
+                </div>
+              </div>
+              <div
+                id="settings-notifications"
+                class="content-active content-hide"
+              >
+                <div class="content-header">
+                  <h1>Notification Settings</h1>
+                </div>
+                <div class="content-body">
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>Email Notifications</h3>
+                      <p>Receive email notifications for important updates</p>
+                    </div>
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="email-notification"
+                        id="toggle-email-notification"
+                        checked
+                      />
                     </div>
                   </div>
-                </section>
-
-                <!-- Display Section -->
-                <section class="settings-section" id="display">
-                  <h2>Appearance</h2>
-                  <label class="switch">
-                    <input type="checkbox" id="darkModeToggle" />
-                    <span class="slider"></span>
-                  </label>
-                  <span>Dark Mode</span>
-                </section>
-
-                <!-- Security Settings -->
-                <section class="settings-section" id="security">
-                  <h2>Security Settings</h2>
-                  <div class="form-set">
-                    <h3>Change Password</h3>
-                    <div class="input-set">
-                      <label class="set-sub">Current Password</label>
-                      <input type="text" name="username" required />
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>Browser Notifications</h3>
+                      <p>Show browser notifications for system alerts</p>
                     </div>
-
-                    <div class="input-set">
-                      <label class="set-sub">New Password</label>
-                      <input type="email" name="email" required />
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="browser-notification"
+                        id="toggle-browser-notification"
+                        checked
+                      />
                     </div>
-
-                    <div class="input-set">
-                      <label class="set-sub">Confirm New Password</label>
-                      <input type="password" name="password" required />
-                    </div>
-
-                    <div>
-                      <h2>Two-Factor Authentication</h2>
-                      <label class="switch">
-                        <input type="checkbox" id="darkModeToggle" />
-                        <span class="slider"></span>
-                      </label>
-                      <span>Enable two-factor authentication</span>
-                      <p class="confirm-desc">
-                        Adds an extra layer of security to your account by
-                        requiring more than just a password to sign in.
+                  </div>
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>Acount Updates</h3>
+                      <p>
+                        Get notified when OFWs update their account information
                       </p>
                     </div>
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="account-update-notification"
+                        id="toggle-account-update-notification"
+                        checked
+                      />
+                    </div>
                   </div>
-                </section>
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>Document Submissions</h3>
+                      <p>Get notified when new documents are submitted</p>
+                    </div>
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="document-submissions-notification"
+                        id="document-submissions-notification"
+                        checked
+                      />
+                    </div>
+                  </div>
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>New Messages</h3>
+                      <p>Get notified when new documents are submitted</p>
+                    </div>
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="new-message-notifications"
+                        id="toggle-new-message-notifications"
+                        checked
+                      />
+                    </div>
+                  </div>
+                  <div class="notifications-items">
+                    <div class="notification-item-label">
+                      <h3>System Maintenance</h3>
+                      <p>Get notified scheduled system maintenance</p>
+                    </div>
+                    <div class="notification-item-toggle">
+                      <input
+                        type="checkbox"
+                        name="system-maintenance-notifications"
+                        id="toggle-system-maintenance-notifications"
+                        checked
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="content-footer">
+                  <button id="notification-save-changes" class="save-changes">
+                    <img src="images/icons/save-changes-icon.svg" alt="" />Save
+                    Changes
+                  </button>
+                </div>
+              </div>
+              <div id="settings-system" class="content-active content-hide">
+                <div class="content-header">
+                  <h1>System Settings</h1>
+                </div>
+
+                <div class="content-body">
+                  <div class="system-information">
+                    <h2>System Information</h2>
+                    <div class="system-information-content">
+                      <div style="grid-area: system-information-1">
+                        <p class="system-information-label">System Version</p>
+                        <p>PMDL v2.4.0</p>
+                      </div>
+                      <div style="grid-area: system-information-2">
+                        <p class="system-information-label">Last Update</p>
+                        <p>December 10, 2023</p>
+                      </div>
+                      <div style="grid-area: system-information-3">
+                        <p class="system-information-label">Server Status</p>
+                        <p class="system-information-status">Online</p>
+                      </div>
+
+                      <div style="grid-area: system-information-4">
+                        <p class="system-information-label">Database status</p>
+                        <p class="system-information-status">Connected</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="content-footer">
+                  <button id="system-save-changes" class="save-changes">
+                    <img src="images/icons/save-changes-icon.svg" alt="" />Save
+                    Changes
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+          <script
+            type="module"
+            src="jsfile/admin-dashboard/settings.js"
+          ></script>
         </section>
       </div>
     </div>
