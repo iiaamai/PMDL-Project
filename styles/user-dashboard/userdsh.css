@@ -1,6 +1,6 @@
 .container {
   font-family: "Poppins", sans-serif;
-  padding: 20px 20px;
+  padding: 0 0 0 2em;
   flex: 1;
   background: #ffffff;
 }
@@ -18,10 +18,9 @@
 .user1 {
   margin-left: 850px;
 }
-.main{
+.main {
   margin-left: 200px;
 }
-
 
 /* -------------------------------------------------------------- */
 .sidebar {
@@ -267,7 +266,6 @@
   gap: 9px;
   margin-top: 50px;
   font-family: "Poppins", sans-serif;
-
 }
 
 .mess-content1 {
@@ -341,8 +339,8 @@
   height: 500px;
   padding: 15px;
   background-color: #f7f7f7;
-  overflow-y: auto;       /* makes it scroll vertically */
-  overflow-x: hidden;  
+  overflow-y: auto; /* makes it scroll vertically */
+  overflow-x: hidden;
 }
 
 /* --------------------------------- */
@@ -386,11 +384,11 @@
   margin-bottom: 25px;
   font-size: 20px;
 }
-.input-set label{
+.input-set label {
   display: block;
   margin-bottom: 5px;
 }
 /* security */
-.confirm-desc{
+.confirm-desc {
   color: #777;
 }
