@@ -24,23 +24,23 @@ $userEmail = $_SESSION['email'];
     <!-- Messages Section CSS -->
     <link
       rel="stylesheet"
-      href="styles/admin-dashboard/messages/messages-list.css"
+      href="styles/user-dashboard/messages/messages-list.css"
     />
     <link
       rel="stylesheet"
-      href="styles/admin-dashboard/messages/messages-conversation.css"
+      href="styles/user-dashboard/messages/messages-conversation.css"
     />
     <link
       rel="stylesheet"
-      href="styles/admin-dashboard/messages/messages-conversation-error.css"
+      href="styles/user-dashboard/messages/messages-conversation-error.css"
     />
     <link
       rel="stylesheet"
-      href="styles/admin-dashboard/messages/messages-list-error.css"
+      href="styles/user-dashboard/messages/messages-list-error.css"
     />
     <link
       rel="stylesheet"
-      href="styles/admin-dashboard/messages/messages-conversation-new.css"
+      href="styles/user-dashboard/messages/messages-conversation-new.css"
     />
     <!-- icon -->
     <link
