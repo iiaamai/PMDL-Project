@@ -1,0 +1,28 @@
+.notifications-container {
+  display: grid;
+  grid-template-columns: 40ch 1fr;
+  grid-template-rows: 16vh 84vh;
+  grid-template-areas:
+    "header header"
+    "list content";
+  height: 100vh;
+  border-radius: 0.5em;
+  overflow: hidden;
+  border: #e4e6ea solid 0.1em;
+}
+.notifications-header {
+  grid-area: header;
+  border-bottom: #e4e6ea solid 0.1em;
+}
+.notifications-list {
+  grid-area: list;
+  background-color: blue;
+  border-right: #e4e6ea solid 0.1em;
+  border-top: #e4e6ea solid 0.1em;
+}
+.notifications-content {
+  grid-area: content;
+  background-color: blue;
+  border-left: #e4e6ea solid 0.1em;
+  border-top: #e4e6ea solid 0.1em;
+}
