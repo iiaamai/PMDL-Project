@@ -1,0 +1,41 @@
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+}
+.notifications-list * {
+  margin: 0;
+  padding: 0;
+}
+.notification-list-container {
+  background-color: white;
+  border-bottom: #e4e6ea solid 0.1em;
+  display: flex;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 1em;
+  gap: 1em;
+  height: 15vh;
+}
+.notification-icon {
+  object-fit: cover;
+  height: 4vh;
+  align-self: flex-start;
+  justify-self: center;
+}
+.notification-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+.notification-details p {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  white-space: normal;
+}
+.notification-time-stamp {
+  font-size: 0.8rem;
+}

@@ -16,13 +16,12 @@
 }
 .notifications-list {
   grid-area: list;
-  background-color: blue;
   border-right: #e4e6ea solid 0.1em;
-  border-top: #e4e6ea solid 0.1em;
+  overflow: auto;
 }
 .notifications-content {
   grid-area: content;
   background-color: blue;
   border-left: #e4e6ea solid 0.1em;
-  border-top: #e4e6ea solid 0.1em;
+  overflow: auto;
 }
