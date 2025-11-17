@@ -10,18 +10,22 @@
   overflow: hidden;
   border: #e4e6ea solid 0.1em;
 }
+.notifications-container * {
+  margin: 0;
+  padding: 0;
+}
 .notifications-header {
   grid-area: header;
   border-bottom: #e4e6ea solid 0.1em;
 }
 .notifications-list {
   grid-area: list;
-  border-right: #e4e6ea solid 0.1em;
+  border-right: #e4e6ea solid 0.05em;
   overflow: auto;
+  background-color: white;
 }
 .notifications-content {
   grid-area: content;
-  background-color: blue;
-  border-left: #e4e6ea solid 0.1em;
-  overflow: auto;
+  border-left: #e4e6ea solid 0.05em;
+  transition: background-color 0.1s ease-in-out;
 }

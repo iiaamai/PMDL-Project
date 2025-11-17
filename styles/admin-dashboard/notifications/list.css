@@ -1,6 +1,8 @@
 .notifications-list {
   display: flex;
   flex-direction: column;
+  overflow: auto;
+  height: 100%;
 }
 .notifications-list * {
   margin: 0;
@@ -14,7 +16,12 @@
   box-sizing: border-box;
   padding: 1em;
   gap: 1em;
-  height: 15vh;
+  min-height: 6.5em;
+}
+.notification-list-container:hover {
+  background-color: #f3f4f699;
+  transition: bakcground-color 0.15s ease-in-out;
+  cursor: pointer;
 }
 .notification-icon {
   object-fit: cover;
@@ -25,7 +32,8 @@
 .notification-details {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: 0.2em;
+  flex: 1;
 }
 .notification-details p {
   text-align: left;
@@ -35,7 +43,16 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   white-space: normal;
+  min-width: 0;
 }
 .notification-time-stamp {
   font-size: 0.8rem;
+}
+.notification-name {
+  color: black;
+  font-weight: 600;
+  font-size: 1rem;
+}
+.notification-message {
+  font-size: 0.95rem;
 }
