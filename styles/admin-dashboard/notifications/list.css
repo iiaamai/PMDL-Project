@@ -9,6 +9,7 @@
   padding: 0;
 }
 .notification-list-container {
+  position: relative;
   background-color: white;
   border-bottom: #e4e6ea solid 0.1em;
   display: flex;
@@ -18,6 +19,22 @@
   gap: 1em;
   min-height: 6.5em;
 }
+/*---for interactivity---*/
+.notif-unread {
+  background-color: #fef2f2;
+}
+.notif-tag {
+  object-fit: contain;
+  width: 0.7em;
+  align-self: flex-start;
+  display: none;
+  position: absolute;
+  left: 93%;
+}
+.notif-unread .notif-tag {
+  display: block;
+}
+/*---for interactivity---*/
 .notification-list-container:hover {
   background-color: #f3f4f699;
   transition: bakcground-color 0.15s ease-in-out;
