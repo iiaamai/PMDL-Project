@@ -1,8 +1,10 @@
 import { chat, message, chatMembers } from "./objects.js";
 import { getUser } from "../users.js";
+import { formatTime } from "../../utils/format.js";
 
 export class ChatManager {
   constructor() {
+    this.formatTime = formatTime;
     this.chats = JSON.parse(localStorage.getItem("chats")) || [
       // 1-on-1 chat between users[0] (John Doe) and users[1] (Jane Smith)
       new chat(
@@ -205,14 +207,6 @@ export class ChatManager {
   }
 
   // 🔹 Format time
-  formatTime(message) {
-    if (!message) return "";
-    return new Date(message.timestamp).toLocaleTimeString([], {
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: true,
-    });
-  }
 
   // 🔹 Set chat name (for private 1-on-1)
   setChatName(loggedInUser, chat) {

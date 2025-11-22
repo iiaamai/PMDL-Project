@@ -666,7 +666,7 @@ $userEmail = $_SESSION['admin_email'];
         <section id="reports" class="page"></section>
 
         <section id="notifications" class="page">
-          <div class="notifications-container notifications-container-js">
+          <div class="notifications-container">
             <div class="notifications-header">
               <h4>Notification Center</h3>
               <div class="notifications-info"><p>You have 4 unread notifications</p></div>
@@ -681,7 +681,7 @@ $userEmail = $_SESSION['admin_email'];
               </div>
             </div>
 
-            <div class="notifications-list">
+            <div class="notifications-list notifications-list-js">
               <div class="notification-list-container notif-unread">
                 <img src="images/icons/profile-update-icon.png" alt="" class="notification-icon">
                 <div class="notification-details">
@@ -738,15 +738,43 @@ $userEmail = $_SESSION['admin_email'];
               </div>
             </div>
 
-            <div class="notifications-content notif-content-empty">
-              <div>
-                <img src="images/icons/notification-bell-icon-grey.png" alt="">
-                <h5>Select a notification</h5>
-                <p>Choose a notification from the list to view its details</p>
+            <div class="notifications-content notifications-list-js">
+              <div class="notification-content-header">
+                <div class="notification-content-name">
+                  <h4>Profile Update</h4>
+                  <p class = "notification-content-timestamp">
+                    Dec 15, 10:30 AM
+                  </p>
+                </div>
+                <div class="notification-content-actions">
+                  <button><img src="images/icons/check-icon.png" alt=""></button>
+                  <button><img src="images/icons/bin-icon.png" alt=""></button>
+                </div>
+              </div>
+              <div class="notification-content-body">
+                <div class="notification-user-info">
+                  <img src="images/icons/sample-profile.jpg" alt="">
+                  <div class="details">
+                    <p class="user-name">Marial Santos</p>
+                    <p class="user-action">User Action</p>
+                  </div>
+                </div>
+                <div class="notification-context">
+                  <p>Juan Dela Cruz sent you a message about his PDOS schedule</p>
+                  <div class="notification-context-details-profile">
+                    <h5>Account Changes</h5>
+                    <p>The following information was updated:</p>
+                    <h6>Contact Number:</h6>
+                    <p>12345 > 67890</p>
+                    <h6>Email Address:</h6>
+                    <p>example@gmail.com > exmaple1@gmail.com</p>
+                    <p class="updated-by">Changed by: Maria Santos</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
-          <!-- <script type = "module" src="./jsfile/user-dashboard/notification.js"></script> -->
+          <script type = "module" src="./jsfile/admin-dashboard/notification.js"></script>
         </section>
 
         <section id="settings" class="page">
