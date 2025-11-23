@@ -8,9 +8,9 @@ export function renderNotificationList() {
     let html = "";
     notifications.forEach((notif) => {
       html += `
-      <div class="notification-list-container ${isRead(
-        notif.isRead
-      )}" data-notification-id="${notif.id}">
+      <div class="notification-list-container ${
+        notif.isRead ? "" : "notif-unread"
+      }" data-notification-id="${notif.id}">
         <img src="${selectIconType(
           notif.type
         )}" alt="" class="notification-icon">
@@ -42,9 +42,5 @@ export function renderNotificationList() {
       case `${notificationType.JOB_ORDER}`:
         return "images/icons/job-order-icon.png";
     }
-  }
-  function isRead(bool) {
-    if (bool) return "";
-    return "notif-unread";
   }
 }

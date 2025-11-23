@@ -9,7 +9,7 @@ export function formatTime(timestamp) {
 export function formatDateTime(dateObject) {
   if (!dateObject) return "";
 
-  const optionsDate = { month: "short", day: "numeric" };
+  const optionsDate = { month: "short", day: "numeric", year: "numeric" };
   const datePart = dateObject.toLocaleDateString(undefined, optionsDate);
 
   const optionsTime = { hour: "2-digit", minute: "2-digit", hour12: true };

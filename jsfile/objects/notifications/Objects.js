@@ -1,3 +1,5 @@
+import { chatManager } from "../../objects/message/data copy.js";
+import { loggedInUser } from "../../objects/loggedInUser.js";
 // =========================
 // Notification Types
 // =========================
@@ -98,6 +100,17 @@ export class AccountChangesNotification extends Notification {
   get updatedBy() {
     return this.#updatedBy;
   }
+  renderUpdatedFields(user) {
+    let html = "";
+    this.#updatedFields.forEach((field) => {
+      html += `
+        <h6>${field.name}:</h6>
+        <p>${field.value}</p>
+      `;
+    });
+    html += `<p class="updated-by">Changed by: ${user.firstName} ${user.lastName}</p>`;
+    return html;
+  }
 }
 
 // =========================
@@ -106,6 +119,7 @@ export class AccountChangesNotification extends Notification {
 export class MessageNotification extends Notification {
   #fromUser;
   #conversationId;
+  #previewMessage;
 
   constructor({
     id,
@@ -114,7 +128,6 @@ export class MessageNotification extends Notification {
     message,
     timestamp = new Date(),
     isRead = false,
-    fromUser,
     conversationId,
   }) {
     super({
@@ -125,8 +138,14 @@ export class MessageNotification extends Notification {
       timestamp,
       isRead,
     });
-    this.#fromUser = fromUser;
     this.#conversationId = conversationId;
+    this.#fromUser = chatManager
+      .getChatMembers(conversationId)
+      .find((member) => member.userId !== loggedInUser.id).userId;
+    const messages = chatManager
+      .getChatMessages(conversationId)
+      .filter((message) => message.senderId === this.#fromUser);
+    this.#previewMessage = chatManager.getLatestMessage(messages).message;
   }
 
   get fromUser() {
@@ -135,6 +154,9 @@ export class MessageNotification extends Notification {
   get conversationId() {
     return this.#conversationId;
   }
+  get previewMessage() {
+    return this.#previewMessage;
+  }
 }
 
 // =========================
@@ -142,6 +164,7 @@ export class MessageNotification extends Notification {
 // =========================
 export class AccountRequestNotification extends Notification {
   #requestId;
+  #userId;
   #status; // pending, approved, rejected
 
   constructor({
@@ -152,6 +175,7 @@ export class AccountRequestNotification extends Notification {
     timestamp = new Date(),
     isRead = false,
     requestId,
+    userId,
     status,
   }) {
     super({
@@ -164,6 +188,7 @@ export class AccountRequestNotification extends Notification {
     });
     this.#requestId = requestId;
     this.#status = status;
+    this.#userId = userId;
   }
 
   get requestId() {
@@ -172,12 +197,16 @@ export class AccountRequestNotification extends Notification {
   get status() {
     return this.#status;
   }
+  get userId() {
+    return this.#userId;
+  }
 }
 
 // =========================
 // Document Notification
 // =========================
 export class DocumentNotification extends Notification {
+  #userId;
   #documentId;
   #action; // uploaded, approved, rejected, updated
 
@@ -189,6 +218,7 @@ export class DocumentNotification extends Notification {
     timestamp = new Date(),
     isRead = false,
     documentId,
+    userId,
     action,
   }) {
     super({
@@ -201,8 +231,11 @@ export class DocumentNotification extends Notification {
     });
     this.#documentId = documentId;
     this.#action = action;
+    this.#userId = userId;
   }
-
+  get userId() {
+    return this.#userId;
+  }
   get documentId() {
     return this.#documentId;
   }
@@ -247,6 +280,7 @@ export class SystemNotification extends Notification {
 // =========================
 export class JobOrderNotification extends Notification {
   #jobId;
+  #updatedBy;
   #status; // assigned, completed, cancelled, updated
 
   constructor({
@@ -257,6 +291,7 @@ export class JobOrderNotification extends Notification {
     timestamp = new Date(),
     isRead = false,
     jobId,
+    updatedBy,
     status,
   }) {
     super({
@@ -269,10 +304,14 @@ export class JobOrderNotification extends Notification {
     });
     this.#jobId = jobId;
     this.#status = status;
+    this.#updatedBy = updatedBy;
   }
 
   get jobId() {
     return this.#jobId;
+  }
+  get updatedBy() {
+    return this.#updatedBy;
   }
   get status() {
     return this.#status;

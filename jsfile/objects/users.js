@@ -8,6 +8,8 @@ class user {
   #password;
   #profilePicture;
   #isOnline;
+  #sex;
+  #contact;
 
   constructor(
     id,
@@ -18,7 +20,9 @@ class user {
     email,
     password,
     profilePicture,
-    isOnline = false
+    isOnline = false,
+    sex,
+    contact
   ) {
     this.#id = id;
     this.#lastName = lastName;
@@ -29,6 +33,8 @@ class user {
     this.#password = password;
     this.#profilePicture = profilePicture;
     this.#isOnline = isOnline;
+    this.#sex = sex;
+    this.#contact = contact;
   }
 
   // Getters
@@ -58,6 +64,12 @@ class user {
   }
   get isOnline() {
     return this.#isOnline;
+  }
+  get sex() {
+    return this.#sex;
+  }
+  get contact() {
+    return this.#contact;
   }
 
   // Setters
@@ -100,7 +112,9 @@ export const users = [
     "john.doe@example.com",
     "pass1",
     "images/icons/sample-profile.jpg",
-    true
+    true,
+    "male",
+    "0917 456 8321"
   ),
   new user(
     2,
@@ -111,7 +125,9 @@ export const users = [
     "jane.smith@example.com",
     "pass2",
     "images/icons/sample-profile.jpg",
-    true
+    true,
+    "female",
+    "0920 883 4419"
   ),
   new user(
     3,
@@ -122,7 +138,9 @@ export const users = [
     "alice.brown@example.com",
     "pass3",
     "images/icons/sample-profile.jpg",
-    false
+    false,
+    "female",
+    "0956 204 7783"
   ),
   new user(
     4,
@@ -133,7 +151,9 @@ export const users = [
     "bob.wilson@example.com",
     "pass4",
     "images/icons/sample-profile.jpg",
-    true
+    true,
+    "male",
+    "0991 673 1045"
   ),
   new user(
     5,
@@ -144,7 +164,9 @@ export const users = [
     "carlos.martinez@example.com",
     "pass5",
     "images/icons/sample-profile.jpg",
-    false
+    false,
+    "male",
+    "0908 552 7391"
   ),
   new user(
     6,
@@ -155,7 +177,9 @@ export const users = [
     "sophie.lee@example.com",
     "pass6",
     "images/icons/sample-profile.jpg",
-    true
+    true,
+    "female",
+    "0945 118 6627"
   ),
   new user(
     7,
@@ -166,7 +190,9 @@ export const users = [
     "amit.patel@example.com",
     "pass7",
     "images/icons/sample-profile.jpg",
-    false
+    false,
+    "female",
+    "0967 309 5214"
   ),
   new user(
     8,
@@ -177,7 +203,9 @@ export const users = [
     "maria.garcia@example.com",
     "pass8",
     "images/icons/sample-profile.jpg",
-    false
+    false,
+    "female",
+    "0935 780 4492"
   ),
 ];
 
