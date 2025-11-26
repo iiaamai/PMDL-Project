@@ -51,6 +51,11 @@ export const notifications = [
     title: "System Maintenance",
     message: "The system will be offline tonight from 10 PM to 12 AM.",
     severity: "high",
+    affectedServices: [
+      "User Registration",
+      "Document uploads",
+      "Payment processing",
+    ],
     timestamp: new Date("2025-11-22T08:00:00"),
   }),
   new JobOrderNotification({

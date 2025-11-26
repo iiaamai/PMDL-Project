@@ -58,6 +58,9 @@ export class Notification {
   get isRead() {
     return this.#isRead;
   }
+  set isRead(bool) {
+    this.#isRead = bool;
+  }
 
   // Methods
   markAsRead() {
@@ -249,6 +252,7 @@ export class DocumentNotification extends Notification {
 // =========================
 export class SystemNotification extends Notification {
   #severity; // low, normal, high, critical
+  #affectedServices;
 
   constructor({
     id,
@@ -258,6 +262,7 @@ export class SystemNotification extends Notification {
     timestamp = new Date(),
     isRead = false,
     severity,
+    updatedFields: affectedServices,
   }) {
     super({
       id,
@@ -268,10 +273,20 @@ export class SystemNotification extends Notification {
       isRead,
     });
     this.#severity = severity;
+    this.#affectedServices = affectedServices;
   }
 
   get severity() {
     return this.#severity;
+  }
+  get affectedServices() {
+    return this.#affectedServices;
+  }
+  renderServices() {
+    let html = "";
+    this.#affectedServices.forEach(
+      (service) => (html += `<li>${service}</li>`)
+    );
   }
 }
 

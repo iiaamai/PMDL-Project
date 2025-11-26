@@ -31,3 +31,7 @@
   border-radius: 0.5em;
   background-color: white;
 }
+.filter-btn-active {
+  background-color: #fee2e2 !important;
+  color: #b31b1b;
+}

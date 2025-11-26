@@ -1,14 +1,23 @@
-import { notifications } from "../../objects/notifications/data.js";
 import { notificationType } from "../../objects/notifications/Objects.js";
 import { formatDateTime } from "../../utils/format.js";
-export function renderNotificationList() {
-  document.querySelector(".notifications-list-js").innerHTML = renderList();
-
+export function renderNotificationList(notifList, renderNotificationContent) {
+  const list = document.querySelector(".notifications-list-js");
+  list.classList.remove("notif-list-empty");
+  list.innerHTML = renderList();
   function renderList() {
     let html = "";
-    notifications.forEach((notif) => {
+    if (notifList.length === 0) {
+      list.classList.add("notif-list-empty");
+      html = `
+        <div>
+          <img src="images/icons/notifications-list-empty.png" alt="">
+          <h6>You have no notifications</h6>
+        </div>
+      `;
+    }
+    notifList.forEach((notif) => {
       html += `
-      <div class="notification-list-container ${
+      <div class="notification-list-container notification-list-container-js ${
         notif.isRead ? "" : "notif-unread"
       }" data-notification-id="${notif.id}">
         <img src="${selectIconType(
@@ -27,6 +36,22 @@ export function renderNotificationList() {
     });
     return html;
   }
+  const lists = document.querySelectorAll(".notification-list-container-js");
+
+  lists.forEach((item) => {
+    item.addEventListener("click", () => {
+      lists.forEach((list) => list.classList.remove("notif-active"));
+      const notifId = Number(item.dataset.notificationId);
+      const notif = notifList.find((notif) => notif.id == notifId);
+      console.log(notifId);
+      renderNotificationContent(notifId);
+      if (notif.isRead === false) {
+        notif.isRead = true;
+        item.classList.remove("notif-unread");
+      }
+      item.classList.add("notif-active");
+    });
+  });
   function selectIconType(type) {
     switch (type) {
       case `${notificationType.ACCOUNT_CHANGES}`:

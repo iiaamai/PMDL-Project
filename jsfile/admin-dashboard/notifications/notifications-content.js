@@ -2,9 +2,21 @@ import { notifications } from "../../objects/notifications/data.js";
 import { notificationType } from "../../objects/notifications/Objects.js";
 import { formatDateTime } from "../../utils/format.js";
 import { users } from "../../objects/users.js";
-export function renderNotificationContent() {
-  const notif = notifications.find((notif) => notif.id === 2);
-  console.log(notif.fromUser);
+export function renderNotificationContent(notifId = false) {
+  const content = document.querySelector(".notifications-content-js");
+  content.classList.remove("notif-content-empty");
+  if (notifId === false) {
+    content.classList.add("notif-content-empty");
+    content.innerHTML = `
+        <div>
+          <img src="images/icons/notification-bell-icon-grey.png" alt="">
+          <h5>Select a notification</h5>
+          <p>Choose a notification from the list to view its details</p>
+        </div>
+    `;
+    return;
+  }
+  const notif = notifications.find((notif) => notif.id === notifId);
   let user;
 
   if (notif.type === notificationType.SYSTEM) {
@@ -24,9 +36,9 @@ export function renderNotificationContent() {
       }
     });
   }
+
   console.log(user);
-  document.querySelector(".notifications-content-js").innerHTML =
-    renderContent();
+  content.innerHTML = renderContent();
 
   function renderContent() {
     return `
@@ -60,6 +72,7 @@ export function renderNotificationContent() {
     `;
   }
   function renderContentType() {
+    console.log("abc");
     switch (notif.type) {
       case `${notificationType.ACCOUNT_CHANGES}`:
         return `
@@ -89,28 +102,25 @@ export function renderNotificationContent() {
       case `${notificationType.ACCOUNT_REQUEST}`:
         return `
           <div class="notification-context">
+            <p>${notif.message}</p>
             <div class="notification-context-details-account-request">
               <h4>Account Request Details</h4>
               <div>
                 <h6>Request ID:</h6>
-                <p>REQ-2023-123</p>
+                <p>${notif.requestId}</p>
               </div>
               <div>
-                <h6>Email:</h6>
-                <p>example@gmail.com</p>
+                <h6>User ID:</h6>
+                <p>${notif.userId}</p>
               </div>
               <div>
-                <h6>Phone Number:</h6>
-                <p>+63 9123456789</p>
-              </div>
-              <div>
-                <h6>Request Type:</h6>
-                <p>OFW Registration</p>
+                <h6>Status:</h6>
+                <p>${notif.status}</p>
               </div>
               
               <div class = "buttons">
-                <button class = "approved-btn">&#10003; Approve</button>
-                <button class = "reject-btn">&#10005; Reject</button>
+                <button id="notif-account-req-approve"class = "approved-btn" data-notification-id="${notif.id}">&#10003; Approve</button>
+                <button  id="notif-account-req-reject" class = "reject-btn" data-notification-id="${notif.id}">&#10005; Reject</button>
               </div>
             </div>
           </div>
@@ -118,36 +128,31 @@ export function renderNotificationContent() {
       case `${notificationType.DOCUMENTS}`:
         return `
           <div class="notification-context">
-            <p>Message Preview</p>
+            <p>${notif.message}</p>
             <div class="notification-context-details-documents">
-              <h4>Document Status Update</h4>
+              <h4>Document Update</h4>
               <div>
-                <h6>Document Type:</h6>
-                <p>Visa</p>
+                <h6>User ID:</h6>
+                <p>${notif.userId}</p>
               </div>
-              <div class="status pending">
-                <h6>Previous Status:</h6>
-                <p>Pending</p>
+              <div class="status ${
+                notif.action === "approved" ? "approved" : "pending"
+              }">
+                <h6>Action:</h6>
+                <p>${notif.action}</p>
               </div>
-              <div class="status approved">
-                <h6>New Status:</h6>
-                <p>Approved</p>
-              </div>
-              <div>
-                <h6>Comments:</h6>
-                <p>All requirements met. Visa valid for 2 years.</p>
-              </div>
-              <button><img src="images/icons/doc-icon-white.png" alt="">View Document</button>
+              <button id="view-document-btn" data-notificatin-id="${
+                notif.id
+              }"><img src="images/icons/doc-icon-white.png" alt="">View Document</button>
             </div>
           </div>
           `;
       case `${notificationType.SYSTEM}`:
         return `
           <div class="notification-context">
-            <p>Message Preview</p>
+            <p>${notif.message}</p>
             <div class="notification-context-details-system-maintenance">
               <h4>System Notification</h4>
-              <p>Scheduled System Maintenance on December 20, 2023 from 10:00 PM to 2:00 AM</p>
               <h6>Affected Services:</h6>
               <ul>
                 <li>User registration</li>

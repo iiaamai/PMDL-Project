@@ -20,6 +20,9 @@
   min-height: 6.5em;
 }
 /*---for interactivity---*/
+.notif-active {
+  background-color: #f5f5f5;
+}
 .notif-unread {
   background-color: #fef2f2;
 }
@@ -33,6 +36,30 @@
 }
 .notif-unread .notif-tag {
   display: block;
+}
+
+.notifications-list.notif-list-empty {
+  display: flex;
+  grid-template-rows: none;
+  grid-template-areas: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+.notif-list-empty div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.notif-list-empty img {
+  object-fit: contain;
+  height: 4em;
+  background-color: #f3f4f6;
+  border-radius: 50%;
+  padding: 0.5em;
 }
 /*---for interactivity---*/
 .notification-list-container:hover {

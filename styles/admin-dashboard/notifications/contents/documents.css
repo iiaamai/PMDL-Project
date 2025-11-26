@@ -15,6 +15,7 @@
 }
 .notification-context-details-documents .status {
   display: flex;
+  align-items: center;
   gap: 1em;
 }
 .notification-context-details-documents .status p {

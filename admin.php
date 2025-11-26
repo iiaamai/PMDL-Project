@@ -70,6 +70,7 @@ $userEmail = $_SESSION['admin_email'];
     <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/profile.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/messages.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/account-request.css" />
+    <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/documents.css" />
     <!-- icon -->
     <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/system-maintenance.css" />
     <link rel="stylesheet" href="styles/admin-dashboard/notifications/contents/job-order.css" />
@@ -671,107 +672,21 @@ $userEmail = $_SESSION['admin_email'];
               <h4>Notification Center</h3>
               <div class="notifications-info"><p>You have 4 unread notifications</p></div>
               <div class="notifications-filter">
-                <button>All</button>
-                <button>Unread</button>
-                <button>Account Changes</button>
-                <button>Messages</button>
-                <button>Account Request</button>
-                <button>Documents</button>
-                <button>System</button>
+                <button id="btn-all">All</button>
+                <button id="btn-unread">Unread</button>
+                <button id="btn-account-changes">Account Changes</button>
+                <button id="btn-messages">Messages</button>
+                <button id="btn-account-request">Account Request</button>
+                <button id="btn-documents">Documents</button>
+                <button id="btn-system">System</button>
               </div>
             </div>
 
             <div class="notifications-list notifications-list-js">
-              <div class="notification-list-container notif-unread">
-                <img src="images/icons/profile-update-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">Profile Updated</p>
-                  <p class="notification-time-stamp">Dec 15, 10:30 AM</p>
-                  <p class="notification-message">Marial Santos updated her contact informatasdadas dasd sdioas dadasda sdasd asdn</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
-              <div class="notification-list-container">
-                <img src="images/icons/message-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">New Message</p>
-                  <p class="notification-time-stamp">Dec 14, 03:45 PM</p>
-                  <p class="notification-message">Juan Dela Cruz sent you a message about his PDOS schedule</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
-              <div class="notification-list-container">
-                <img src="images/icons/account-request-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">New Account Request</p>
-                  <p class="notification-time-stamp">Dec 14, 09:20 AM</p>
-                  <p class="notification-message">Elena Reyes requested to create an account</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
-              <div class="notification-list-container">
-                <img src="images/icons/docs-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">Document Status Changed</p>
-                  <p class="notification-time-stamp">Dec 13, 04:10 PM</p>
-                  <p class="notification-message">Pedro Lim's visa application has been approved</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
-              <div class="notification-list-container">
-                <img src="images/icons/System-maintenance-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">System Maintenance</p>
-                  <p class="notification-time-stamp">Dec 13, 11:00 AM</p>
-                  <p class="notification-message">Scheduled system maintenance on December 20, 2023 from 10:00 PM to 2:00 AM</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
-              <div class="notification-list-container">
-                <img src="images/icons/job-order-icon.png" alt="" class="notification-icon">
-                <div class="notification-details">
-                  <p class="notification-name">New Job Order Posted</p>
-                  <p class="notification-time-stamp">Dec 13, 11:00 AM</p>
-                  <p class="notification-message">Scheduled system maintenance on December 20, 2023 from 10:00 PM to 2:00 AM</p>
-                </div>
-                <img class = "notif-tag"src="./images/icons/dot-icon-red.png" alt="">
-              </div>
             </div>
 
             <div class="notifications-content notifications-content-js">
-              <div class="notification-content-header">
-                <div class="notification-content-name">
-                  <h4>Profile Update</h4>
-                  <p class = "notification-content-timestamp">
-                    Dec 15, 10:30 AM
-                  </p>
-                </div>
-                <div class="notification-content-actions">
-                  <button><img src="images/icons/check-icon.png" alt=""></button>
-                  <button><img src="images/icons/bin-icon.png" alt=""></button>
-                </div>
-              </div>
-              <div class="notification-content-body">
-                <div class="notification-user-info">
-                  <img src="images/icons/sample-profile.jpg" alt="">
-                  <div class="details">
-                    <p class="user-name">Marial Santos</p>
-                    <p class="user-action">User Action</p>
-                  </div>
-                </div>
-                <div class="notification-context">
-                  <p>Juan Dela Cruz sent you a message about his PDOS schedule</p>
-                  <div class="notification-context-details-profile">
-                    <h5>Account Changes</h5>
-                    <p>The following information was updated:</p>
-                    <h6>Contact Number:</h6>
-                    <p>12345 > 67890</p>
-                    <h6>Email Address:</h6>
-                    <p>example@gmail.com > exmaple1@gmail.com</p>
-                    <p class="updated-by">Changed by: Maria Santos</p>
-                  </div>
-                </div>
-              </div>
+              
             </div>
           </div>
           <script type = "module" src="./jsfile/admin-dashboard/notification.js"></script>
